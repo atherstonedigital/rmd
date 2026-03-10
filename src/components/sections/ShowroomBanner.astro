@@ -1,61 +1,52 @@
 ---
 import { siteConfig } from '@/data/siteConfig';
 import Button from '@/components/ui/Button.astro';
+import ScrollReveal from '@/components/react/ScrollReveal';
 
 const address = siteConfig.address;
 const mapsQuery = encodeURIComponent(
   `${address.street}, ${address.locality}, ${address.town}, ${address.postcode}`
 );
 const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${mapsQuery}`;
-const telUrl = `tel:${siteConfig.phone.showroom.replace(/\s/g, '')}`;
 ---
 
-<section class="relative py-16 lg:py-24 overflow-hidden">
-  <!-- Background with warm overlay -->
-  <div class="absolute inset-0">
-    <img
-      src="/images/showroom-placeholder.jpg"
-      alt="RMD Flooring showroom in Drayton Bassett, Tamworth"
-      width="1920"
-      height="600"
-      loading="lazy"
-      class="w-full h-full object-cover"
-    />
-    <div class="absolute inset-0 bg-gradient-to-r from-amber/90 to-amber/70"></div>
-  </div>
-
-  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-    <h2 class="text-3xl lg:text-4xl font-display font-bold text-navy">
-      Visit Our Showroom
-    </h2>
-    <p class="mt-4 text-lg text-navy/80 max-w-2xl mx-auto">
-      See and feel our flooring samples in person. Our Tamworth showroom is the
-      perfect place to explore your options with expert guidance.
-    </p>
-
-    <!-- Address -->
-    <address class="mt-6 not-italic text-navy/90 font-heading font-medium">
-      <p>{address.street}, {address.locality}</p>
-      <p>{address.town}, {address.postcode}</p>
-    </address>
-
-    <!-- Opening hours -->
-    <div class="mt-4 text-sm text-navy/70">
-      {siteConfig.openingHours.map((item) => (
-        <p>
-          <span class="font-medium text-navy/90">{item.label}:</span> {item.hours}
+<section class="bg-navy-dark py-24 lg:py-32 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <ScrollReveal client:visible>
+      <div class="text-center max-w-2xl mx-auto">
+        <h2 class="text-3xl lg:text-4xl font-display font-bold text-white mb-4">
+          Visit Our Showroom
+        </h2>
+        <p class="text-lg text-white/60 mb-8">
+          See and feel our flooring samples in person. Our Tamworth showroom is the
+          perfect place to explore your options with expert guidance.
         </p>
-      ))}
-    </div>
 
-    <!-- CTAs -->
-    <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-      <Button href={mapsUrl} variant="primary" size="md" class="w-full sm:w-auto">
-        Get Directions
-      </Button>
-      <Button href={telUrl} variant="secondary" size="md" class="w-full sm:w-auto border-navy">
-        Call Us
-      </Button>
-    </div>
+        <!-- Address -->
+        <address class="not-italic text-white/80 font-heading font-medium mb-4">
+          <p>{address.street}, {address.locality}</p>
+          <p>{address.town}, {address.postcode}</p>
+        </address>
+
+        <!-- Opening hours -->
+        <div class="text-sm text-white/50 mb-8">
+          {siteConfig.openingHours.map((item) => (
+            <p>
+              <span class="text-white/70">{item.label}:</span> {item.hours}
+            </p>
+          ))}
+        </div>
+
+        <!-- CTAs -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <Button href={mapsUrl} variant="primary" size="md" class="bg-amber text-navy hover:bg-amber-light rounded-full w-full sm:w-auto px-8">
+            Get Directions
+          </Button>
+          <Button href={siteConfig.phone.showroomTel} variant="secondary" size="md" class="border-white text-white hover:bg-white hover:text-navy rounded-full w-full sm:w-auto px-8">
+            Call Us
+          </Button>
+        </div>
+      </div>
+    </ScrollReveal>
   </div>
 </section>

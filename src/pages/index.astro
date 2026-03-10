@@ -3,10 +3,11 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import { siteConfig } from '@/data/siteConfig';
 import { buildLocalBusiness, buildOrganization, buildWebSite } from '@/lib/schema';
 import HeroSection from '@/components/sections/HeroSection.astro';
+import BrandMarquee from '@/components/sections/BrandMarquee.astro';
 import ServicesGrid from '@/components/sections/ServicesGrid.astro';
 import TrustBar from '@/components/sections/TrustBar.astro';
 import FeaturedProject from '@/components/sections/FeaturedProject.astro';
-import ReviewsSection from '@/components/sections/ReviewsSection.astro';
+import TestimonialsSection from '@/components/sections/TestimonialsSection.astro';
 import ShowroomBanner from '@/components/sections/ShowroomBanner.astro';
 import ContactCTA from '@/components/sections/ContactCTA.astro';
 
@@ -23,10 +24,11 @@ const schemaData = [
 
 <BaseLayout title={title} description={description} canonical={canonical} schemaData={schemaData} isHomepage={true}>
   <HeroSection />
+  <BrandMarquee />
   <ServicesGrid />
   <TrustBar />
   <FeaturedProject />
-  <ReviewsSection />
+  <TestimonialsSection />
   <ShowroomBanner />
   <ContactCTA />
 </BaseLayout>

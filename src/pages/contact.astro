@@ -4,6 +4,7 @@ import { siteConfig } from '@/data/siteConfig';
 import { buildLocalBusiness } from '@/lib/schema';
 import PageHero from '@/components/sections/PageHero.astro';
 import Button from '@/components/ui/Button.astro';
+import ScrollReveal from '@/components/react/ScrollReveal';
 
 const title = 'Contact RMD Flooring | Get a Free Quote, Tamworth';
 const description = 'Get in touch with RMD Flooring for a free flooring quote. Visit our Tamworth showroom or call us. Serving Birmingham, Sutton Coldfield, Lichfield and the West Midlands.';
@@ -23,14 +24,15 @@ const serviceOptions = [
   'LVT Flooring',
   'Carpets',
   'Stair Runners',
-  'Other',
+  'Wet Room',
+  'Not Sure Yet',
 ];
 
 const referralOptions = [
   'Google Search',
-  'Recommendation',
+  'Word of Mouth',
   'Social Media',
-  'Drove Past Showroom',
+  'Referred by Client',
   'Other',
 ];
 ---
@@ -44,213 +46,217 @@ const referralOptions = [
     ]}
   />
 
-  <section class="py-16 lg:py-24">
+  <section class="py-24 lg:py-32">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
         <!-- Left: Contact details -->
-        <div>
-          <h2 class="text-2xl font-display font-bold text-navy mb-6">
-            Contact Details
-          </h2>
+        <ScrollReveal client:visible direction="left">
+          <div>
+            <h2 class="text-2xl font-display font-bold text-navy mb-6">
+              Contact Details
+            </h2>
 
-          <div class="space-y-6">
-            <!-- Phone -->
-            <div>
-              <h3 class="text-sm font-heading font-semibold text-navy uppercase tracking-wider mb-2">Phone</h3>
-              <p>
-                <span class="text-mid-grey text-sm">Showroom: </span>
-                <a href={`tel:${siteConfig.phone.showroom.replace(/\s/g, '')}`} class="text-navy font-medium hover:text-amber transition-all duration-200">
-                  {siteConfig.phone.showroom}
+            <div class="space-y-6">
+              <!-- Phone -->
+              <div>
+                <h3 class="text-sm font-heading font-semibold text-navy uppercase tracking-wider mb-2">Phone</h3>
+                <p>
+                  <span class="text-mid-grey text-sm">Showroom: </span>
+                  <a href={siteConfig.phone.showroomTel} class="text-navy font-medium hover:text-amber transition-all duration-200">
+                    {siteConfig.phone.showroom}
+                  </a>
+                </p>
+                <p>
+                  <span class="text-mid-grey text-sm">Mobile: </span>
+                  <a href={siteConfig.phone.mobileTel} class="text-navy font-medium hover:text-amber transition-all duration-200">
+                    {siteConfig.phone.mobile}
+                  </a>
+                </p>
+              </div>
+
+              <!-- Email -->
+              <div>
+                <h3 class="text-sm font-heading font-semibold text-navy uppercase tracking-wider mb-2">Email</h3>
+                <a href={`mailto:${siteConfig.email}`} class="text-navy font-medium hover:text-amber transition-all duration-200">
+                  {siteConfig.email}
                 </a>
-              </p>
-              <p>
-                <span class="text-mid-grey text-sm">Mobile: </span>
-                <a href={`tel:${siteConfig.phone.mobile.replace(/\s/g, '')}`} class="text-navy font-medium hover:text-amber transition-all duration-200">
-                  {siteConfig.phone.mobile}
-                </a>
-              </p>
-            </div>
+              </div>
 
-            <!-- Email -->
-            <div>
-              <h3 class="text-sm font-heading font-semibold text-navy uppercase tracking-wider mb-2">Email</h3>
-              <a href={`mailto:${siteConfig.email}`} class="text-navy font-medium hover:text-amber transition-all duration-200">
-                {siteConfig.email}
-              </a>
-            </div>
+              <!-- Address -->
+              <div>
+                <h3 class="text-sm font-heading font-semibold text-navy uppercase tracking-wider mb-2">Showroom Address</h3>
+                <address class="not-italic text-charcoal leading-relaxed">
+                  <p>{address.street}</p>
+                  <p>{address.locality}</p>
+                  <p>{address.town}, {address.postcode}</p>
+                </address>
+              </div>
 
-            <!-- Address -->
-            <div>
-              <h3 class="text-sm font-heading font-semibold text-navy uppercase tracking-wider mb-2">Showroom Address</h3>
-              <address class="not-italic text-charcoal leading-relaxed">
-                <p>{address.street}</p>
-                <p>{address.locality}</p>
-                <p>{address.town}, {address.postcode}</p>
-              </address>
-            </div>
+              <!-- Hours -->
+              <div>
+                <h3 class="text-sm font-heading font-semibold text-navy uppercase tracking-wider mb-2">Opening Hours</h3>
+                <div class="text-charcoal text-sm space-y-1">
+                  {siteConfig.openingHours.map((item) => (
+                    <p>
+                      <span class="font-medium">{item.label}:</span> {item.hours}
+                    </p>
+                  ))}
+                </div>
+              </div>
 
-            <!-- Hours -->
-            <div>
-              <h3 class="text-sm font-heading font-semibold text-navy uppercase tracking-wider mb-2">Opening Hours</h3>
-              <div class="text-charcoal text-sm space-y-1">
-                {siteConfig.openingHours.map((item) => (
-                  <p>
-                    <span class="font-medium">{item.label}:</span> {item.hours}
-                  </p>
-                ))}
+              <!-- Service area -->
+              <div>
+                <h3 class="text-sm font-heading font-semibold text-navy uppercase tracking-wider mb-2">Areas We Cover</h3>
+                <p class="text-sm text-mid-grey">
+                  {siteConfig.serviceArea.join(', ')} and surrounding areas.
+                </p>
               </div>
             </div>
 
-            <!-- Service area -->
-            <div>
-              <h3 class="text-sm font-heading font-semibold text-navy uppercase tracking-wider mb-2">Areas We Cover</h3>
-              <p class="text-sm text-mid-grey">
-                {siteConfig.serviceArea.join(', ')} and surrounding areas.
-              </p>
+            <!-- Map -->
+            <div class="mt-8 rounded-2xl overflow-hidden shadow-md border border-stone-200">
+              <iframe
+                src={mapsEmbedUrl}
+                width="600"
+                height="350"
+                allowfullscreen
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title={`Map showing ${siteConfig.name} showroom location in ${address.town}`}
+                class="w-full h-64 lg:h-80 border-0"
+              ></iframe>
             </div>
           </div>
-
-          <!-- Map -->
-          <div class="mt-8 rounded-xl overflow-hidden shadow-md border border-stone-200">
-            <iframe
-              src={mapsEmbedUrl}
-              width="600"
-              height="350"
-              allowfullscreen
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              title={`Map showing ${siteConfig.name} showroom location in ${address.town}`}
-              class="w-full h-64 lg:h-80 border-0"
-            ></iframe>
-          </div>
-        </div>
+        </ScrollReveal>
 
         <!-- Right: Form -->
-        <div>
-          <h2 class="text-2xl font-display font-bold text-navy mb-6">
-            Request a Free Quote
-          </h2>
-          <p class="text-mid-grey mb-8">
-            Fill in the form below and we&rsquo;ll get back to you within 24 hours.
-            Alternatively, call us or visit the showroom.
-          </p>
-
-          <form
-            name="contact"
-            method="POST"
-            data-netlify="true"
-            netlify-honeypot="bot-field"
-            action="/thank-you/"
-            class="space-y-5"
-          >
-            <input type="hidden" name="form-name" value="contact" />
-
-            <!-- Honeypot -->
-            <p class="hidden">
-              <label>
-                Don't fill this out: <input name="bot-field" />
-              </label>
+        <ScrollReveal client:visible direction="right" delay={0.15}>
+          <div>
+            <h2 class="text-2xl font-display font-bold text-navy mb-6">
+              Request a Free Quote
+            </h2>
+            <p class="text-mid-grey mb-8">
+              Fill in the form below and we&rsquo;ll get back to you within 24 hours.
+              Alternatively, call us or visit the showroom.
             </p>
 
-            <!-- Full Name -->
-            <div>
-              <label for="name" class="block text-sm font-heading font-medium text-navy mb-1">
-                Full Name <span class="text-amber">*</span>
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                required
-                class="w-full px-4 py-3 rounded border border-stone-200 bg-white text-charcoal placeholder:text-mid-grey/50 focus:outline-none focus:ring-2 focus:ring-amber focus:border-amber transition-all duration-200"
-                placeholder="Your full name"
-              />
-            </div>
+            <form
+              name="contact"
+              method="POST"
+              data-netlify="true"
+              netlify-honeypot="bot-field"
+              action="/thank-you/"
+              class="space-y-5"
+            >
+              <input type="hidden" name="form-name" value="contact" />
 
-            <!-- Phone -->
-            <div>
-              <label for="phone" class="block text-sm font-heading font-medium text-navy mb-1">
-                Phone Number
-              </label>
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                class="w-full px-4 py-3 rounded border border-stone-200 bg-white text-charcoal placeholder:text-mid-grey/50 focus:outline-none focus:ring-2 focus:ring-amber focus:border-amber transition-all duration-200"
-                placeholder="Your phone number"
-              />
-            </div>
+              <!-- Honeypot -->
+              <p class="hidden">
+                <label>
+                  Don't fill this out: <input name="bot-field" />
+                </label>
+              </p>
 
-            <!-- Email -->
-            <div>
-              <label for="email" class="block text-sm font-heading font-medium text-navy mb-1">
-                Email Address <span class="text-amber">*</span>
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                required
-                class="w-full px-4 py-3 rounded border border-stone-200 bg-white text-charcoal placeholder:text-mid-grey/50 focus:outline-none focus:ring-2 focus:ring-amber focus:border-amber transition-all duration-200"
-                placeholder="you@example.com"
-              />
-            </div>
+              <!-- Full Name -->
+              <div>
+                <label for="name" class="block text-sm font-heading font-medium text-navy mb-1">
+                  Full Name <span class="text-amber">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  class="w-full px-4 py-3 rounded-xl border border-stone-200 bg-white text-charcoal placeholder:text-mid-grey/50 focus:outline-none focus:ring-2 focus:ring-amber focus:border-amber transition-all duration-200"
+                  placeholder="Your full name"
+                />
+              </div>
 
-            <!-- Service -->
-            <div>
-              <label for="service" class="block text-sm font-heading font-medium text-navy mb-1">
-                Service Interested In
-              </label>
-              <select
-                id="service"
-                name="service"
-                class="w-full px-4 py-3 rounded border border-stone-200 bg-white text-charcoal focus:outline-none focus:ring-2 focus:ring-amber focus:border-amber transition-all duration-200"
-              >
-                <option value="">Select a service...</option>
-                {serviceOptions.map((opt) => (
-                  <option value={opt}>{opt}</option>
-                ))}
-              </select>
-            </div>
+              <!-- Phone -->
+              <div>
+                <label for="phone" class="block text-sm font-heading font-medium text-navy mb-1">
+                  Phone Number <span class="text-amber">*</span>
+                </label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  required
+                  class="w-full px-4 py-3 rounded-xl border border-stone-200 bg-white text-charcoal placeholder:text-mid-grey/50 focus:outline-none focus:ring-2 focus:ring-amber focus:border-amber transition-all duration-200"
+                  placeholder="Your phone number"
+                />
+              </div>
 
-            <!-- How did you hear -->
-            <div>
-              <label for="referral" class="block text-sm font-heading font-medium text-navy mb-1">
-                How Did You Hear About Us?
-              </label>
-              <select
-                id="referral"
-                name="referral"
-                class="w-full px-4 py-3 rounded border border-stone-200 bg-white text-charcoal focus:outline-none focus:ring-2 focus:ring-amber focus:border-amber transition-all duration-200"
-              >
-                <option value="">Select an option...</option>
-                {referralOptions.map((opt) => (
-                  <option value={opt}>{opt}</option>
-                ))}
-              </select>
-            </div>
+              <!-- Email -->
+              <div>
+                <label for="email" class="block text-sm font-heading font-medium text-navy mb-1">
+                  Email Address <span class="text-amber">*</span>
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  class="w-full px-4 py-3 rounded-xl border border-stone-200 bg-white text-charcoal placeholder:text-mid-grey/50 focus:outline-none focus:ring-2 focus:ring-amber focus:border-amber transition-all duration-200"
+                  placeholder="you@example.com"
+                />
+              </div>
 
-            <!-- Message -->
-            <div>
-              <label for="message" class="block text-sm font-heading font-medium text-navy mb-1">
-                Message <span class="text-amber">*</span>
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                required
-                rows="5"
-                class="w-full px-4 py-3 rounded border border-stone-200 bg-white text-charcoal placeholder:text-mid-grey/50 focus:outline-none focus:ring-2 focus:ring-amber focus:border-amber transition-all duration-200 resize-y"
-                placeholder="Tell us about your flooring project..."
-              ></textarea>
-            </div>
+              <!-- Service -->
+              <div>
+                <label for="service" class="block text-sm font-heading font-medium text-navy mb-1">
+                  Service Interested In
+                </label>
+                <select
+                  id="service"
+                  name="service"
+                  class="w-full px-4 py-3 rounded-xl border border-stone-200 bg-white text-charcoal focus:outline-none focus:ring-2 focus:ring-amber focus:border-amber transition-all duration-200"
+                >
+                  <option value="">Select a service...</option>
+                  {serviceOptions.map((opt) => (
+                    <option value={opt}>{opt}</option>
+                  ))}
+                </select>
+              </div>
 
-            <!-- Submit -->
-            <Button type="submit" variant="primary" size="lg" class="w-full">
-              Send Enquiry
-            </Button>
-          </form>
-        </div>
+              <!-- How did you hear -->
+              <div>
+                <label for="referral" class="block text-sm font-heading font-medium text-navy mb-1">
+                  How Did You Hear About Us?
+                </label>
+                <select
+                  id="referral"
+                  name="referral"
+                  class="w-full px-4 py-3 rounded-xl border border-stone-200 bg-white text-charcoal focus:outline-none focus:ring-2 focus:ring-amber focus:border-amber transition-all duration-200"
+                >
+                  <option value="">Select an option...</option>
+                  {referralOptions.map((opt) => (
+                    <option value={opt}>{opt}</option>
+                  ))}
+                </select>
+              </div>
+
+              <!-- Message -->
+              <div>
+                <label for="message" class="block text-sm font-heading font-medium text-navy mb-1">
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  class="w-full px-4 py-3 rounded-xl border border-stone-200 bg-white text-charcoal placeholder:text-mid-grey/50 focus:outline-none focus:ring-2 focus:ring-amber focus:border-amber transition-all duration-200 resize-y"
+                  placeholder="Tell us about your flooring project..."
+                ></textarea>
+              </div>
+
+              <!-- Submit -->
+              <Button type="submit" variant="primary" size="lg" class="w-full rounded-full">
+                Send My Enquiry
+              </Button>
+            </form>
+          </div>
+        </ScrollReveal>
       </div>
     </div>
   </section>

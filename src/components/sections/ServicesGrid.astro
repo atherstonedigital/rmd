@@ -1,5 +1,7 @@
 ---
 import { services } from '@/data/services';
+import SpotlightCard from '@/components/react/aceternity/SpotlightCard';
+import ScrollReveal from '@/components/react/ScrollReveal';
 
 const displayServices = services.filter((s) => s.id !== 'wet-rooms');
 
@@ -11,58 +13,75 @@ const iconPaths: Record<string, string> = {
 };
 ---
 
-<section class="bg-off-white py-16 lg:py-24">
+<section class="bg-off-white py-24 lg:py-32">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Section heading -->
-    <div class="text-center mb-12 lg:mb-16">
-      <h2 class="text-3xl lg:text-4xl font-display font-bold text-navy">
-        Our Services
-      </h2>
-      <p class="mt-4 text-lg text-mid-grey max-w-2xl mx-auto">
-        Premium flooring installation across the West Midlands. From luxury vinyl
-        to bespoke stair runners, every project is fitted to perfection.
-      </p>
-    </div>
+    <ScrollReveal client:visible>
+      <div class="text-center mb-14 lg:mb-20">
+        <p class="text-xs font-heading font-medium uppercase tracking-[0.2em] text-amber mb-4">
+          What We Do
+        </p>
+        <h2 class="text-3xl lg:text-4xl font-display font-bold text-navy">
+          Our Services
+        </h2>
+        <p class="mt-4 text-lg text-mid-grey max-w-2xl mx-auto">
+          Premium flooring installation across the West Midlands. From luxury vinyl
+          to bespoke stair runners, every project is fitted to perfection.
+        </p>
+      </div>
+    </ScrollReveal>
 
     <!-- Grid -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-      {displayServices.map((service) => (
-        <a
-          href={`/${service.slug}/`}
-          class="group bg-white rounded-xl shadow-md border border-stone-200 p-6 lg:p-8 transition-all duration-200 hover:shadow-lg hover:-translate-y-1"
-        >
-          <!-- Icon -->
-          <div class="w-12 h-12 rounded-lg bg-amber/10 flex items-center justify-center mb-5">
-            <svg
-              class="w-6 h-6 text-amber"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              viewBox="0 0 24 24"
-            >
-              <path d={iconPaths[service.icon] || iconPaths.Layers} />
-            </svg>
-          </div>
+      {displayServices.map((service, i) => (
+        <ScrollReveal client:visible delay={i * 0.1}>
+          <a href={`/${service.slug}/`} class="block h-full group">
+            <SpotlightCard client:visible className="bg-white rounded-2xl shadow-md border border-stone-200 p-6 lg:p-8 h-full transition-all duration-200 hover:shadow-lg hover:-translate-y-1">
+              <!-- Icon -->
+              <div class="w-12 h-12 rounded-xl bg-amber/10 flex items-center justify-center mb-5">
+                <svg
+                  class="w-6 h-6 text-amber"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  viewBox="0 0 24 24"
+                >
+                  <path d={iconPaths[service.icon] || iconPaths.Layers} />
+                </svg>
+              </div>
 
-          <!-- Content -->
-          <h3 class="text-lg font-heading font-semibold text-navy mb-2 group-hover:text-navy-light transition-all duration-200">
-            {service.name}
-          </h3>
-          <p class="text-sm text-mid-grey leading-relaxed mb-4">
-            {service.shortDescription}
-          </p>
+              <!-- Content -->
+              <h3 class="text-lg font-heading font-semibold text-navy mb-1 group-hover:text-navy-light transition-colors duration-200">
+                {service.name}
+              </h3>
+              <p class="text-xs text-amber font-medium mb-3">{service.tagline}</p>
+              <p class="text-sm text-mid-grey leading-relaxed mb-4">
+                {service.shortDescription}
+              </p>
 
-          <!-- Link arrow -->
-          <span class="inline-flex items-center text-sm font-medium text-amber group-hover:gap-2 gap-1 transition-all duration-200">
-            Learn More
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-            </svg>
-          </span>
-        </a>
+              <!-- Link arrow -->
+              <span class="inline-flex items-center text-sm font-medium text-amber group-hover:gap-2 gap-1 transition-all duration-200">
+                Explore
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </span>
+            </SpotlightCard>
+          </a>
+        </ScrollReveal>
       ))}
+    </div>
+
+    <!-- View all -->
+    <div class="text-center mt-10">
+      <a href="/contact/" class="text-sm font-heading font-medium text-navy hover:text-amber transition-colors duration-200 inline-flex items-center gap-1">
+        View all services
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
     </div>
   </div>
 </section>

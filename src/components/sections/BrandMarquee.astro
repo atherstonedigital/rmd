@@ -1,0 +1,31 @@
+---
+import Marquee from '@/components/react/magicui/Marquee';
+
+const brands = [
+  { name: 'Karndean', file: 'karndean' },
+  { name: 'Amtico', file: 'amtico' },
+  { name: 'Invictus', file: 'invictus' },
+  { name: 'Brampton Chase', file: 'brampton-chase' },
+  { name: 'Project Floors', file: 'project-floors' },
+];
+---
+
+<section class="bg-warm-white border-y border-stone py-10 lg:py-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <p class="text-xs text-mid-grey uppercase tracking-[0.2em] text-center mb-6 font-heading font-medium">
+      Approved Installer
+    </p>
+  </div>
+  <Marquee client:visible pauseOnHover duration="30s" gap="3rem">
+    {brands.map((brand) => (
+      <img
+        src={`/images/brands/${brand.file}.png`}
+        alt={`${brand.name} approved installer`}
+        width="140"
+        height="48"
+        loading="lazy"
+        class="h-8 sm:h-10 w-auto opacity-50 hover:opacity-100 transition-opacity duration-200 mx-4"
+      />
+    ))}
+  </Marquee>
+</section>

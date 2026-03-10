@@ -1,70 +1,64 @@
 ---
 import Button from '@/components/ui/Button.astro';
-
-const brands = [
-  { name: 'Karndean', file: 'karndean' },
-  { name: 'Amtico', file: 'amtico' },
-  { name: 'Invictus', file: 'invictus' },
-  { name: 'Brampton Chase', file: 'brampton-chase' },
-  { name: 'Project Floors', file: 'project-floors' },
-];
+import BackgroundBeams from '@/components/react/aceternity/BackgroundBeams';
+import BlurIn from '@/components/react/BlurIn';
+import ShimmerText from '@/components/react/magicui/ShimmerText';
 ---
 
-<section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
-  <!-- Background image with overlay -->
-  <div class="absolute inset-0">
-    <img
-      src="/images/hero-placeholder.jpg"
-      alt="Premium luxury vinyl flooring installation in West Midlands home"
-      width="1920"
-      height="1080"
-      loading="eager"
-      class="w-full h-full object-cover"
-    />
-    <div class="absolute inset-0 bg-gradient-to-b from-navy/70 via-navy/50 to-navy/80"></div>
-  </div>
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-navy-dark">
+  <!-- Background Beams -->
+  <BackgroundBeams client:load className="absolute inset-0 z-0" />
 
   <!-- Content -->
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-20">
-    <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-display font-bold text-white leading-tight tracking-tight">
-      Bespoke Luxury Flooring
-    </h1>
-    <p class="mt-6 text-lg sm:text-xl lg:text-2xl text-white/80 max-w-3xl mx-auto font-sans leading-relaxed">
-      Over 20 years fitting premium Karndean, Amtico and luxury vinyl flooring
-      across Tamworth and the West Midlands.
-    </p>
+    <!-- Approved Installer label -->
+    <div class="mb-6">
+      <ShimmerText client:load className="text-xs sm:text-sm font-heading font-medium uppercase tracking-[0.2em]">
+        Approved Karndean & Amtico Installers
+      </ShimmerText>
+    </div>
+
+    <!-- Main headline with blur-in animation -->
+    <BlurIn client:load delay={0.3} duration={1}>
+      <h1 class="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-display font-bold text-white leading-[1.1] tracking-tight">
+        Bespoke Luxury Flooring
+      </h1>
+    </BlurIn>
+
+    <!-- Subheadline -->
+    <BlurIn client:load delay={0.6} duration={0.8}>
+      <p class="mt-6 text-lg sm:text-xl text-white/70 max-w-xl mx-auto font-sans leading-relaxed">
+        Over 20 years transforming homes across Tamworth and the West Midlands
+        with premium Karndean, Amtico and luxury vinyl flooring.
+      </p>
+    </BlurIn>
 
     <!-- CTAs -->
-    <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-      <Button href="/contact/" variant="primary" size="lg" class="bg-amber text-navy hover:bg-amber-light hover:ring-0 font-bold w-full sm:w-auto">
-        Get a Quote
-      </Button>
-      <Button href="/gallery/" variant="secondary" size="lg" class="border-white text-white hover:bg-white hover:text-navy w-full sm:w-auto">
-        View Our Work
-      </Button>
-    </div>
-
-    <!-- Brand logos -->
-    <div class="mt-16 pt-8 border-t border-white/20">
-      <p class="text-xs text-white/40 uppercase tracking-widest mb-6">Approved Installer</p>
-      <div class="flex flex-wrap items-center justify-center gap-6 sm:gap-10">
-        {brands.map((brand) => (
-          <img
-            src={`/images/brands/${brand.file}.png`}
-            alt={`${brand.name} approved installer`}
-            width="120"
-            height="40"
-            loading="eager"
-            class="h-6 sm:h-8 w-auto opacity-60 hover:opacity-100 transition-all duration-200"
-          />
-        ))}
+    <BlurIn client:load delay={0.9} duration={0.8}>
+      <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <Button
+          href="/contact/"
+          variant="primary"
+          size="lg"
+          class="bg-amber text-navy hover:bg-amber-light font-bold rounded-full w-full sm:w-auto px-8"
+        >
+          Get a Free Quote
+        </Button>
+        <Button
+          href="/gallery/"
+          variant="secondary"
+          size="lg"
+          class="border-white text-white hover:bg-white hover:text-navy rounded-full w-full sm:w-auto px-8"
+        >
+          View Our Work
+        </Button>
       </div>
-    </div>
+    </BlurIn>
   </div>
 
   <!-- Scroll indicator -->
   <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">
-    <svg class="w-6 h-6 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <svg class="w-6 h-6 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
     </svg>
   </div>
