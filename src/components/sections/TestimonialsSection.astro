@@ -1,0 +1,58 @@
+---
+import { testimonials } from '@/data/testimonials';
+import Button from '@/components/ui/Button.astro';
+import ScrollReveal from '@/components/react/ScrollReveal';
+
+function renderStars(count: number) {
+  return Array(count).fill('★').join('');
+}
+---
+
+<section class="py-24 lg:py-32 bg-warm-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <ScrollReveal client:visible>
+      <div class="text-center mb-14">
+        <p class="text-xs font-heading font-medium uppercase tracking-[0.2em] text-amber mb-4">
+          What Our Customers Say
+        </p>
+        <div class="flex items-center justify-center gap-3 mb-4">
+          <span class="text-3xl text-amber">★★★★★</span>
+          <span class="text-3xl font-display font-bold text-navy">5.0</span>
+        </div>
+        <h2 class="text-3xl lg:text-4xl font-display font-bold text-navy">
+          5-Star Google Reviews
+        </h2>
+      </div>
+    </ScrollReveal>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+      {testimonials.map((review, i) => (
+        <ScrollReveal client:visible delay={i * 0.15}>
+          <div class="bg-white rounded-2xl shadow-md border border-stone-200 p-8 h-full flex flex-col">
+            <div class="flex items-center gap-3 mb-5">
+              <div class="w-11 h-11 rounded-full bg-navy flex items-center justify-center shrink-0">
+                <span class="text-white font-heading font-semibold text-sm">
+                  {review.author.charAt(0)}
+                </span>
+              </div>
+              <div>
+                <p class="font-heading font-semibold text-navy">{review.author}</p>
+                <p class="text-xs text-mid-grey">
+                  Google Review{review.location ? ` · ${review.location}` : ''}
+                </p>
+              </div>
+            </div>
+            <div class="text-amber text-sm mb-4">{renderStars(review.rating)}</div>
+            <p class="text-charcoal text-sm leading-relaxed flex-1">{review.body}</p>
+          </div>
+        </ScrollReveal>
+      ))}
+    </div>
+
+    <div class="text-center mt-10">
+      <Button href="/testimonials/" variant="secondary" size="md" class="rounded-xl">
+        Read All Reviews
+      </Button>
+    </div>
+  </div>
+</section>

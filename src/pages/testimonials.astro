@@ -14,7 +14,7 @@ const canonical = siteConfig.url + '/testimonials/';
 const schemaData = [buildAggregateRating(testimonials)];
 
 const featured = testimonials.find((t) => t.featured);
-const otherReviews = testimonials.filter((t) => !t.featured);
+
 
 function renderStars(count: number) {
   return Array(count).fill('★').join('');

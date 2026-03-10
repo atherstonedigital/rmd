@@ -3,6 +3,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import { siteConfig } from '@/data/siteConfig';
 import { buildImageGallery } from '@/lib/schema';
 import PageHero from '@/components/sections/PageHero.astro';
+import ScrollReveal from '@/components/react/ScrollReveal';
 
 const title = 'Project Gallery | RMD Flooring, West Midlands';
 const description = 'Browse our gallery of luxury flooring installations across the West Midlands. Karndean, Amtico, LVT, carpets and stair runner projects in homes and commercial spaces.';
@@ -35,29 +36,38 @@ const schemaData = [
       { label: 'Home', href: '/' },
       { label: 'Gallery' },
     ]}
-  />
+  >
+    <p class="mt-4 text-white/70 text-lg max-w-2xl">
+      Every project is a reflection of our commitment to quality. Browse our recent
+      installations across the West Midlands.
+    </p>
+  </PageHero>
 
-  <section class="py-16 lg:py-24">
+  <section class="py-24 lg:py-32">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl font-display font-bold text-navy mb-4">Project Gallery</h2>
-      <p class="text-lg text-mid-grey max-w-3xl mb-12">
-        Every project is a reflection of our commitment to quality. Browse our recent
-        installations across Tamworth, Birmingham, Sutton Coldfield and the wider
-        West Midlands — from luxury Karndean herringbone to bespoke stair runners.
-      </p>
+      <ScrollReveal client:visible>
+        <div class="mb-10">
+          <h2 class="text-3xl font-display font-bold text-navy mb-4">Project Gallery</h2>
+          <p class="text-lg text-mid-grey max-w-3xl">
+            From luxury Karndean herringbone to bespoke stair runners — premium
+            installations across Tamworth, Birmingham, Sutton Coldfield and the wider
+            West Midlands.
+          </p>
+        </div>
+      </ScrollReveal>
 
       <!-- Filter buttons -->
       <div class="flex flex-wrap gap-2 mb-10" id="gallery-filters">
-        <button data-filter="all" class="gallery-filter active px-4 py-2 rounded text-sm font-heading font-medium bg-navy text-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-amber">
+        <button data-filter="all" class="gallery-filter active px-5 py-2.5 rounded-full text-sm font-heading font-medium bg-navy text-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-amber">
           All
         </button>
-        <button data-filter="lvt" class="gallery-filter px-4 py-2 rounded text-sm font-heading font-medium bg-white text-navy border border-stone-200 hover:bg-navy hover:text-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-amber">
+        <button data-filter="lvt" class="gallery-filter px-5 py-2.5 rounded-full text-sm font-heading font-medium bg-white text-navy border border-stone-200 hover:bg-navy hover:text-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-amber">
           LVT & Vinyl
         </button>
-        <button data-filter="carpet" class="gallery-filter px-4 py-2 rounded text-sm font-heading font-medium bg-white text-navy border border-stone-200 hover:bg-navy hover:text-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-amber">
+        <button data-filter="carpet" class="gallery-filter px-5 py-2.5 rounded-full text-sm font-heading font-medium bg-white text-navy border border-stone-200 hover:bg-navy hover:text-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-amber">
           Carpets
         </button>
-        <button data-filter="runner" class="gallery-filter px-4 py-2 rounded text-sm font-heading font-medium bg-white text-navy border border-stone-200 hover:bg-navy hover:text-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-amber">
+        <button data-filter="runner" class="gallery-filter px-5 py-2.5 rounded-full text-sm font-heading font-medium bg-white text-navy border border-stone-200 hover:bg-navy hover:text-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-amber">
           Stair Runners
         </button>
       </div>
@@ -66,7 +76,7 @@ const schemaData = [
       <div id="gallery-grid" class="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
         {galleryImages.map((img) => (
           <div
-            class="gallery-item break-inside-avoid rounded-xl overflow-hidden shadow-md group cursor-pointer"
+            class="gallery-item break-inside-avoid rounded-2xl overflow-hidden shadow-md group cursor-pointer"
             data-category={img.category}
           >
             <img
@@ -88,14 +98,14 @@ const schemaData = [
       <div id="lightbox" class="fixed inset-0 z-50 hidden bg-black/90 items-center justify-center p-4">
         <button
           id="lightbox-close"
-          class="absolute top-4 right-4 text-white p-2 rounded focus:outline-none focus:ring-2 focus:ring-amber"
+          class="absolute top-4 right-4 text-white p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-amber"
           aria-label="Close lightbox"
         >
           <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
-        <img id="lightbox-img" src="" alt="" width="1200" height="800" class="max-w-full max-h-[90vh] rounded-lg shadow-2xl" />
+        <img id="lightbox-img" src="" alt="" width="1200" height="800" class="max-w-full max-h-[90vh] rounded-2xl shadow-2xl" />
       </div>
     </div>
   </section>

@@ -1,32 +1,35 @@
 ---
-import { siteConfig } from '@/data/siteConfig';
+import NumberTicker from '@/components/react/magicui/NumberTicker';
 
 const stats = [
   {
-    number: siteConfig.yearsExperience,
+    value: 20,
+    suffix: '+',
     label: 'Years of Experience',
-    icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z',
+    icon: 'M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2M6 14h12v8H6z',
   },
   {
-    number: '5',
-    label: 'Premium Brands — Approved Installer',
-    icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
+    value: 5,
+    suffix: '',
+    label: 'Premium Brand Partners',
+    icon: 'M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z',
   },
   {
-    number: siteConfig.guarantee.split(' ').slice(0, 2).join(' '),
+    value: 2,
+    suffix: ' Year',
     label: 'Fitting Guarantee',
-    icon: 'M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z',
+    icon: 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z',
   },
 ];
 ---
 
-<section class="bg-navy py-12 lg:py-16">
+<section class="bg-navy py-16 lg:py-20">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 text-center">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-16 text-center">
       {stats.map((stat) => (
         <div class="flex flex-col items-center">
           <svg
-            class="w-8 h-8 text-amber mb-3"
+            class="w-8 h-8 text-amber mb-4"
             fill="none"
             stroke="currentColor"
             stroke-width="1.5"
@@ -34,10 +37,15 @@ const stats = [
           >
             <path stroke-linecap="round" stroke-linejoin="round" d={stat.icon} />
           </svg>
-          <span class="text-3xl lg:text-4xl font-display font-bold text-amber">
-            {stat.number}
-          </span>
-          <span class="mt-1 text-sm lg:text-base text-white/80 font-heading">
+          <div class="text-4xl lg:text-5xl font-display font-bold text-amber">
+            <NumberTicker
+              client:visible
+              value={stat.value}
+              suffix={stat.suffix}
+              duration={2000}
+            />
+          </div>
+          <span class="mt-2 text-sm lg:text-base text-white/80 font-heading font-medium">
             {stat.label}
           </span>
         </div>

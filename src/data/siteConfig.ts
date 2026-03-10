@@ -15,6 +15,8 @@ export interface SiteConfig {
   phone: {
     showroom: string;
     mobile: string;
+    showroomTel: string;
+    mobileTel: string;
   };
   email: string;
   openingHours: {
@@ -50,6 +52,8 @@ export const siteConfig: SiteConfig = {
   phone: {
     showroom: '01827 936233',
     mobile: '07731 304083',
+    showroomTel: 'tel:01827936233',
+    mobileTel: 'tel:07731304083',
   },
   email: 'info@rmdflooring.co.uk',
   openingHours: [

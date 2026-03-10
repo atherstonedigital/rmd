@@ -5,6 +5,7 @@ export default {
     extend: {
       colors: {
         navy: {
+          dark: '#0F2035',
           DEFAULT: '#1A3C5E',
           light: '#2A5278',
         },
@@ -18,7 +19,7 @@ export default {
           DEFAULT: '#E8E5DF',
           200: '#E8E5DF',
         },
-        charcoal: '#2D2D2D',
+        charcoal: '#1C1C1C',
         'mid-grey': '#6B7280',
       },
       fontFamily: {
@@ -27,7 +28,29 @@ export default {
         sans: ['Inter', 'sans-serif'],
       },
       fontSize: {
-        base: ['16px', { lineHeight: '1.6' }],
+        base: ['16px', { lineHeight: '1.75' }],
+      },
+      borderRadius: {
+        '2xl': '1rem',
+      },
+      keyframes: {
+        marquee: {
+          from: { transform: 'translateX(0)' },
+          to: { transform: 'translateX(calc(-100% - var(--gap)))' },
+        },
+        'marquee-vertical': {
+          from: { transform: 'translateY(0)' },
+          to: { transform: 'translateY(calc(-100% - var(--gap)))' },
+        },
+        shimmer: {
+          '0%': { backgroundPosition: '200% 0' },
+          '100%': { backgroundPosition: '-200% 0' },
+        },
+      },
+      animation: {
+        marquee: 'marquee var(--duration) linear infinite',
+        'marquee-vertical': 'marquee-vertical var(--duration) linear infinite',
+        shimmer: 'shimmer 3s linear infinite',
       },
     },
   },
