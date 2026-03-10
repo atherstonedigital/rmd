@@ -69,7 +69,7 @@ const isServicePage = serviceLinks.some((l) => l.href === currentPath);
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                     </svg>
                   </button>
-                  <div class="absolute top-full left-0 pt-2 opacity-0 invisible group-hover/services:opacity-100 group-hover/services:visible transition-all duration-200">
+                  <div class="absolute top-full left-0 pt-2 opacity-0 pointer-events-none group-hover/services:opacity-100 group-hover/services:pointer-events-auto transition-all duration-200">
                     <div class="bg-navy-light rounded-lg shadow-xl border border-white/10 py-2 min-w-[220px]">
                       {serviceLinks.map((sLink) => (
                         <a
