@@ -1,65 +1,73 @@
 ---
-import Button from '@/components/ui/Button.astro';
 import BackgroundBeams from '@/components/react/aceternity/BackgroundBeams';
+import WordReveal from '@/components/react/WordReveal';
 import BlurIn from '@/components/react/BlurIn';
 import ShimmerText from '@/components/react/magicui/ShimmerText';
 ---
 
-<section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-navy-dark">
-  <!-- Background Beams -->
+<section class="relative min-h-screen flex items-end overflow-hidden bg-navy-dark grain">
+  <!-- Background Beams — sits behind everything -->
   <BackgroundBeams client:load className="absolute inset-0 z-0" />
 
-  <!-- Content -->
-  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-20">
-    <!-- Approved Installer label -->
-    <div class="mb-6">
-      <ShimmerText client:load className="text-xs sm:text-sm font-heading font-medium uppercase tracking-[0.2em]">
+  <!-- Oversized "01" texture number — top right -->
+  <div
+    class="absolute top-0 right-0 text-[12rem] sm:text-[16rem] lg:text-[20rem] font-display font-bold text-white pointer-events-none select-none leading-none z-[2]"
+    style="opacity: 0.03;"
+    aria-hidden="true"
+  >
+    01
+  </div>
+
+  <!-- Main content — bottom-left aligned, NOT centred -->
+  <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 lg:pb-28 pt-40 lg:pt-48">
+
+    <!-- Approved Installer label — left aligned -->
+    <div class="mb-8">
+      <ShimmerText client:load className="text-xs sm:text-sm font-heading font-medium uppercase tracking-[0.25em]">
         Approved Karndean & Amtico Installers
       </ShimmerText>
     </div>
 
-    <!-- Main headline with blur-in animation -->
-    <BlurIn client:load delay={0.3} duration={1}>
-      <h1 class="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-display font-bold text-white leading-[1.1] tracking-tight">
-        Bespoke Luxury Flooring
-      </h1>
-    </BlurIn>
+    <!-- Headline — enormous, intentionally bleeds off right edge -->
+    <h1 class="text-[4rem] sm:text-[6rem] lg:text-[8rem] xl:text-[10rem] 2xl:text-[12rem] font-display font-bold text-white leading-[0.9] tracking-tight whitespace-nowrap">
+      <WordReveal client:load text="Bespoke Luxury" delay={0.2} stagger={0.12} />
+      <br />
+      <span class="block translate-x-[5%] lg:translate-x-[10%]">
+        <WordReveal client:load text="Flooring" delay={0.5} stagger={0.12} />
+      </span>
+    </h1>
 
-    <!-- Subheadline -->
-    <BlurIn client:load delay={0.6} duration={0.8}>
-      <p class="mt-6 text-lg sm:text-xl text-white/70 max-w-xl mx-auto font-sans leading-relaxed">
+    <!-- Body copy — left-aligned, narrow measure, light weight -->
+    <BlurIn client:load delay={1} duration={0.8}>
+      <p class="mt-8 lg:mt-12 text-base sm:text-lg text-white/50 max-w-sm font-sans font-light leading-relaxed">
         Over 20 years transforming homes across Tamworth and the West Midlands
         with premium Karndean, Amtico and luxury vinyl flooring.
       </p>
     </BlurIn>
 
-    <!-- CTAs -->
-    <BlurIn client:load delay={0.9} duration={0.8}>
-      <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-        <Button
+    <!-- CTA — bottom-left, not centred -->
+    <BlurIn client:load delay={1.3} duration={0.8}>
+      <div class="mt-8 lg:mt-10 flex flex-col sm:flex-row items-start gap-4">
+        <a
           href="/contact/"
-          variant="primary"
-          size="lg"
-          class="bg-amber text-navy hover:bg-amber-light font-bold rounded-full w-full sm:w-auto px-8"
+          class="inline-flex items-center justify-center bg-amber text-navy-dark font-heading font-bold rounded-full px-8 py-4 text-base hover:bg-amber-light transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-amber focus:ring-offset-2 focus:ring-offset-navy-dark"
         >
           Get a Free Quote
-        </Button>
-        <Button
+        </a>
+        <a
           href="/gallery/"
-          variant="secondary"
-          size="lg"
-          class="border-white text-white hover:bg-white hover:text-navy rounded-full w-full sm:w-auto px-8"
+          class="inline-flex items-center justify-center border-2 border-white/20 text-white/80 font-heading font-semibold rounded-full px-8 py-4 text-base hover:bg-white/10 hover:border-white/40 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/30 focus:ring-offset-2 focus:ring-offset-navy-dark"
         >
           View Our Work
-        </Button>
+        </a>
       </div>
     </BlurIn>
   </div>
 
-  <!-- Scroll indicator -->
-  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">
-    <svg class="w-6 h-6 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+  <!-- Scroll indicator — bottom right instead of bottom centre -->
+  <div class="absolute bottom-8 right-8 lg:right-12 z-10 animate-bounce">
+    <svg class="w-5 h-5 text-white/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
     </svg>
   </div>
 </section>
