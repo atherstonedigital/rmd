@@ -2,54 +2,51 @@
   command = "npm run build"
   publish = "dist"
 
-# Trailing slash redirects
+# Trailing slash redirects (no force — only redirect when no asset matches)
 [[redirects]]
   from = "/gallery"
   to = "/gallery/"
   status = 301
-  force = true
 
 [[redirects]]
   from = "/about"
   to = "/about/"
   status = 301
-  force = true
 
 [[redirects]]
   from = "/contact"
   to = "/contact/"
   status = 301
-  force = true
 
 [[redirects]]
   from = "/testimonials"
   to = "/testimonials/"
   status = 301
-  force = true
 
 [[redirects]]
   from = "/karndean-flooring"
   to = "/karndean-flooring/"
   status = 301
-  force = true
 
 [[redirects]]
   from = "/amtico-flooring"
   to = "/amtico-flooring/"
   status = 301
-  force = true
 
 [[redirects]]
   from = "/lvt-flooring"
   to = "/lvt-flooring/"
   status = 301
-  force = true
 
 [[redirects]]
   from = "/carpets-and-stair-runners"
   to = "/carpets-and-stair-runners/"
   status = 301
-  force = true
+
+[[redirects]]
+  from = "/thank-you"
+  to = "/thank-you/"
+  status = 301
 
 # Security headers
 [[headers]]
