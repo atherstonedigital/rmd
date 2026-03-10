@@ -1,11 +1,37 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { siteConfig } from '@/data/siteConfig';
-import { buildService } from '@/lib/schema';
+import { buildService, buildFAQPage } from '@/lib/schema';
+import PageHero from '@/components/sections/PageHero.astro';
+import Button from '@/components/ui/Button.astro';
+import ContactCTA from '@/components/sections/ContactCTA.astro';
 
-const title = `Karndean Flooring Installation | Approved Installer, West Midlands`;
-const description = 'Approved Karndean installer in Tamworth and the West Midlands. Expert fitting of luxury vinyl tile and plank flooring with realistic wood and stone effects. Free quotes available.';
+const title = 'Karndean Flooring Installation | Approved Installer, West Midlands';
+const description = 'Approved Karndean installer in Tamworth and the West Midlands. Expert fitting of luxury vinyl tile and plank flooring with realistic wood and stone effects. Free quotes.';
 const canonical = siteConfig.url + '/karndean-flooring/';
+
+const faqs = [
+  {
+    question: 'How long does Karndean flooring take to install?',
+    answer: 'A typical room takes 1–2 days depending on size, subfloor condition and the laying pattern you choose. Larger projects such as open-plan kitchens may take 3–4 days. We always carry out a site survey first so you know exactly what to expect.',
+  },
+  {
+    question: 'Is Karndean flooring suitable for kitchens and bathrooms?',
+    answer: 'Yes. Karndean is 100% waterproof and slip-resistant, making it an excellent choice for kitchens, bathrooms, utility rooms and even wet rooms. The surface is also warm underfoot compared to ceramic tile.',
+  },
+  {
+    question: 'Do you prepare the subfloor before fitting?',
+    answer: 'Absolutely. Proper subfloor preparation is essential for a long-lasting finish. We level, smooth and prime every subfloor before installation. This is one of the key advantages of using a professional approved installer over DIY.',
+  },
+  {
+    question: 'How do I maintain Karndean flooring?',
+    answer: 'Karndean is very low maintenance. Regular sweeping and occasional mopping with a pH-neutral cleaner is all that is needed. Avoid abrasive cleaning products. Karndean also supply their own care kit which we recommend to all our customers.',
+  },
+  {
+    question: 'What areas do you cover for Karndean installation?',
+    answer: `We cover Tamworth, Birmingham, Sutton Coldfield, Lichfield, Solihull, Coventry and the wider West Midlands region. Contact us if you are unsure whether we cover your area — we are happy to discuss.`,
+  },
+];
 
 const schemaData = [
   buildService(
@@ -13,17 +39,174 @@ const schemaData = [
     'Approved Karndean installer offering expert fitting of luxury vinyl tile and plank flooring across the West Midlands.',
     '/karndean-flooring/'
   ),
+  buildFAQPage(faqs),
+];
+
+const benefits = [
+  {
+    title: 'Manufacturer Warranty Protected',
+    description: 'As an approved Karndean installer, your manufacturer warranty remains fully valid. DIY or unqualified fitting can void it.',
+    icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
+  },
+  {
+    title: 'Expert Subfloor Preparation',
+    description: 'We level, smooth and prime every subfloor before a single tile is laid. This prevents lifting, gaps and premature wear.',
+    icon: 'M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z',
+  },
+  {
+    title: 'Precision Fitting — No Gaps, No Lifting',
+    description: 'Every cut is measured twice and executed with specialist tools. The result is a seamless finish that looks and feels premium.',
+    icon: 'M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z',
+  },
+];
+
+const galleryImages = [
+  { src: '/images/gallery/karndean-01.jpg', alt: 'Karndean wood-effect luxury vinyl plank in modern kitchen, Tamworth' },
+  { src: '/images/gallery/karndean-02.jpg', alt: 'Karndean herringbone pattern LVT in hallway, Sutton Coldfield' },
+  { src: '/images/gallery/karndean-03.jpg', alt: 'Karndean stone-effect flooring in open-plan living area, Birmingham' },
 ];
 ---
 
 <BaseLayout title={title} description={description} canonical={canonical} schemaData={schemaData}>
+  <!-- Hero -->
+  <PageHero
+    title="Karndean Design Flooring, West Midlands"
+    breadcrumbs={[
+      { label: 'Home', href: '/' },
+      { label: 'Karndean Flooring' },
+    ]}
+  />
+
+  <!-- What is Karndean -->
   <section class="py-16 lg:py-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h1 class="text-3xl lg:text-5xl font-display font-bold text-navy">
-        Karndean Flooring
-      </h1>
-      <p class="mt-4 text-lg text-mid-grey">Page content coming soon.</p>
-      <!-- TODO: build sections — What is Karndean, Why Approved Installer, Gallery, FAQ, CTA -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div>
+          <h2 class="text-3xl font-display font-bold text-navy mb-6">
+            What is Karndean Flooring?
+          </h2>
+          <div class="prose prose-lg text-charcoal space-y-4">
+            <p>
+              Karndean is one of the world's leading luxury vinyl flooring brands,
+              crafted to replicate the natural beauty of real wood and stone without
+              the practical drawbacks. Each plank and tile is designed using
+              high-definition photography and textured surfaces to create a
+              remarkably realistic finish.
+            </p>
+            <p>
+              Unlike natural timber or stone, Karndean flooring is 100% waterproof,
+              warm underfoot and compatible with underfloor heating. It resists
+              scratches, stains and fading — making it ideal for busy households,
+              kitchens and bathrooms.
+            </p>
+            <p>
+              Available in hundreds of designs across ranges including
+              <strong>Korlok</strong>, <strong>Van Gogh</strong>,
+              <strong>Art Select</strong> and <strong>Knight Tile</strong>,
+              Karndean offers creative laying patterns such as herringbone,
+              basketweave and border designs for a truly bespoke floor.
+            </p>
+          </div>
+        </div>
+        <div class="rounded-xl overflow-hidden shadow-lg">
+          <img
+            src="/images/gallery/karndean-feature.jpg"
+            alt="Karndean Art Select wood-effect luxury vinyl flooring close-up"
+            width="800"
+            height="600"
+            loading="lazy"
+            class="w-full h-auto object-cover"
+          />
+        </div>
+      </div>
     </div>
   </section>
+
+  <!-- Why Use an Approved Installer -->
+  <section class="bg-off-white py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-display font-bold text-navy">
+          Why Choose an Approved Karndean Installer?
+        </h2>
+        <p class="mt-4 text-lg text-mid-grey max-w-2xl mx-auto">
+          Choosing a professional, approved installer ensures your flooring is
+          fitted correctly, looks its best and lasts for years to come.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {benefits.map((benefit) => (
+          <div class="bg-white rounded-xl shadow-md border border-stone-200 p-6 lg:p-8 text-center">
+            <div class="w-14 h-14 rounded-full bg-amber/10 flex items-center justify-center mx-auto mb-5">
+              <svg class="w-7 h-7 text-amber" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d={benefit.icon} />
+              </svg>
+            </div>
+            <h3 class="text-lg font-heading font-semibold text-navy mb-2">
+              {benefit.title}
+            </h3>
+            <p class="text-sm text-mid-grey leading-relaxed">
+              {benefit.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Karndean Work -->
+  <section class="py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-display font-bold text-navy mb-8 text-center">
+        Our Karndean Work
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {galleryImages.map((img) => (
+          <div class="rounded-xl overflow-hidden shadow-md">
+            <img
+              src={img.src}
+              alt={img.alt}
+              width="600"
+              height="400"
+              loading="lazy"
+              class="w-full h-64 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+        ))}
+      </div>
+      <div class="text-center mt-8">
+        <Button href="/gallery/" variant="secondary" size="md">
+          View Full Gallery
+        </Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="bg-off-white py-16 lg:py-24">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-display font-bold text-navy mb-8 text-center">
+        Frequently Asked Questions
+      </h2>
+      <div class="space-y-4">
+        {faqs.map((faq) => (
+          <details class="group bg-white rounded-xl shadow-sm border border-stone-200 overflow-hidden">
+            <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-heading font-semibold text-navy hover:text-navy-light transition-all duration-200">
+              {faq.question}
+              <svg class="w-5 h-5 text-amber shrink-0 ml-4 group-open:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </summary>
+            <div class="px-6 pb-6 text-charcoal leading-relaxed">
+              {faq.answer}
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <ContactCTA />
 </BaseLayout>

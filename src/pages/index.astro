@@ -2,6 +2,13 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { siteConfig } from '@/data/siteConfig';
 import { buildLocalBusiness, buildOrganization, buildWebSite } from '@/lib/schema';
+import HeroSection from '@/components/sections/HeroSection.astro';
+import ServicesGrid from '@/components/sections/ServicesGrid.astro';
+import TrustBar from '@/components/sections/TrustBar.astro';
+import FeaturedProject from '@/components/sections/FeaturedProject.astro';
+import ReviewsSection from '@/components/sections/ReviewsSection.astro';
+import ShowroomBanner from '@/components/sections/ShowroomBanner.astro';
+import ContactCTA from '@/components/sections/ContactCTA.astro';
 
 const title = `${siteConfig.name} | Luxury Flooring Installers, West Midlands`;
 const description = 'Premium luxury flooring installation in Tamworth and the West Midlands. Approved Karndean and Amtico installers with 20+ years experience. Get a free quote today.';
@@ -15,13 +22,11 @@ const schemaData = [
 ---
 
 <BaseLayout title={title} description={description} canonical={canonical} schemaData={schemaData} isHomepage={true}>
-  <section class="py-16 lg:py-24">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h1 class="text-4xl lg:text-6xl font-display font-bold text-navy">
-        Bespoke Luxury Flooring, West Midlands
-      </h1>
-      <p class="mt-4 text-lg text-mid-grey">Homepage sections coming soon.</p>
-      <!-- TODO: build sections — Hero, Brand Logos, Services Grid, Why RMD, Featured Project, Reviews, Showroom CTA, Contact -->
-    </div>
-  </section>
+  <HeroSection />
+  <ServicesGrid />
+  <TrustBar />
+  <FeaturedProject />
+  <ReviewsSection />
+  <ShowroomBanner />
+  <ContactCTA />
 </BaseLayout>

@@ -2,24 +2,159 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { siteConfig } from '@/data/siteConfig';
 import { buildImageGallery } from '@/lib/schema';
+import PageHero from '@/components/sections/PageHero.astro';
 
-const title = `Project Gallery | RMD Flooring, West Midlands`;
+const title = 'Project Gallery | RMD Flooring, West Midlands';
 const description = 'Browse our gallery of luxury flooring installations across the West Midlands. Karndean, Amtico, LVT, carpets and stair runner projects in homes and commercial spaces.';
 const canonical = siteConfig.url + '/gallery/';
 
+const galleryImages = [
+  { src: '/images/gallery/karndean-01.jpg', alt: 'Karndean wood-effect luxury vinyl plank in modern kitchen, Tamworth', category: 'lvt' },
+  { src: '/images/gallery/karndean-02.jpg', alt: 'Karndean herringbone pattern LVT in hallway, Sutton Coldfield', category: 'lvt' },
+  { src: '/images/gallery/karndean-03.jpg', alt: 'Karndean stone-effect flooring in open-plan living area, Birmingham', category: 'lvt' },
+  { src: '/images/gallery/amtico-01.jpg', alt: 'Amtico Spacia wood-effect LVT in dining room, Lichfield', category: 'lvt' },
+  { src: '/images/gallery/amtico-02.jpg', alt: 'Amtico Signature herringbone flooring in period hallway, Solihull', category: 'lvt' },
+  { src: '/images/gallery/amtico-03.jpg', alt: 'Amtico Form stone-effect luxury vinyl in bathroom, Tamworth', category: 'lvt' },
+  { src: '/images/gallery/carpet-01.jpg', alt: 'Premium wool carpet fitted in master bedroom, Sutton Coldfield', category: 'carpet' },
+  { src: '/images/gallery/carpet-02.jpg', alt: 'Neutral loop pile carpet in living room, Birmingham', category: 'carpet' },
+  { src: '/images/gallery/runner-01.jpg', alt: 'Bespoke stair runner fitted in period home, Tamworth', category: 'runner' },
+  { src: '/images/gallery/runner-02.jpg', alt: 'Striped stair runner with brass stair rods, Lichfield', category: 'runner' },
+  { src: '/images/gallery/featured-project.jpg', alt: 'Karndean luxury vinyl flooring in open-plan living area by RMD Flooring', category: 'lvt' },
+  { src: '/images/gallery/lvt-01.jpg', alt: 'Invictus luxury vinyl plank in contemporary apartment, Coventry', category: 'lvt' },
+];
+
 const schemaData = [
-  buildImageGallery([]),
+  buildImageGallery(galleryImages.map((img) => ({ url: img.src, alt: img.alt }))),
 ];
 ---
 
 <BaseLayout title={title} description={description} canonical={canonical} schemaData={schemaData}>
+  <PageHero
+    title="Our Work"
+    breadcrumbs={[
+      { label: 'Home', href: '/' },
+      { label: 'Gallery' },
+    ]}
+  />
+
   <section class="py-16 lg:py-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h1 class="text-3xl lg:text-5xl font-display font-bold text-navy">
-        Our Work
-      </h1>
-      <p class="mt-4 text-lg text-mid-grey">Gallery coming soon.</p>
-      <!-- TODO: build sections — Filter bar, Masonry/Grid Gallery -->
+      <h2 class="text-3xl font-display font-bold text-navy mb-4">Project Gallery</h2>
+      <p class="text-lg text-mid-grey max-w-3xl mb-12">
+        Every project is a reflection of our commitment to quality. Browse our recent
+        installations across Tamworth, Birmingham, Sutton Coldfield and the wider
+        West Midlands — from luxury Karndean herringbone to bespoke stair runners.
+      </p>
+
+      <!-- Filter buttons -->
+      <div class="flex flex-wrap gap-2 mb-10" id="gallery-filters">
+        <button data-filter="all" class="gallery-filter active px-4 py-2 rounded text-sm font-heading font-medium bg-navy text-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-amber">
+          All
+        </button>
+        <button data-filter="lvt" class="gallery-filter px-4 py-2 rounded text-sm font-heading font-medium bg-white text-navy border border-stone-200 hover:bg-navy hover:text-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-amber">
+          LVT & Vinyl
+        </button>
+        <button data-filter="carpet" class="gallery-filter px-4 py-2 rounded text-sm font-heading font-medium bg-white text-navy border border-stone-200 hover:bg-navy hover:text-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-amber">
+          Carpets
+        </button>
+        <button data-filter="runner" class="gallery-filter px-4 py-2 rounded text-sm font-heading font-medium bg-white text-navy border border-stone-200 hover:bg-navy hover:text-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-amber">
+          Stair Runners
+        </button>
+      </div>
+
+      <!-- Masonry grid using CSS columns -->
+      <div id="gallery-grid" class="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
+        {galleryImages.map((img) => (
+          <div
+            class="gallery-item break-inside-avoid rounded-xl overflow-hidden shadow-md group cursor-pointer"
+            data-category={img.category}
+          >
+            <img
+              src={img.src}
+              alt={img.alt}
+              width="600"
+              height="400"
+              loading="lazy"
+              class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+            <div class="p-3 bg-white">
+              <p class="text-xs text-mid-grey">{img.alt}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Lightbox -->
+      <div id="lightbox" class="fixed inset-0 z-50 hidden bg-black/90 flex items-center justify-center p-4">
+        <button
+          id="lightbox-close"
+          class="absolute top-4 right-4 text-white p-2 rounded focus:outline-none focus:ring-2 focus:ring-amber"
+          aria-label="Close lightbox"
+        >
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+        <img id="lightbox-img" src="" alt="" width="1200" height="800" class="max-w-full max-h-[90vh] rounded-lg shadow-2xl" />
+      </div>
     </div>
   </section>
 </BaseLayout>
+
+<script>
+  // Filter functionality
+  const filterBtns = document.querySelectorAll('.gallery-filter');
+  const items = document.querySelectorAll('.gallery-item');
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const filter = btn.getAttribute('data-filter');
+
+      filterBtns.forEach((b) => {
+        b.classList.remove('bg-navy', 'text-white');
+        b.classList.add('bg-white', 'text-navy', 'border', 'border-stone-200');
+      });
+      btn.classList.remove('bg-white', 'text-navy', 'border', 'border-stone-200');
+      btn.classList.add('bg-navy', 'text-white');
+
+      items.forEach((item) => {
+        const category = item.getAttribute('data-category');
+        if (filter === 'all' || category === filter) {
+          (item as HTMLElement).style.display = '';
+        } else {
+          (item as HTMLElement).style.display = 'none';
+        }
+      });
+    });
+  });
+
+  // Lightbox
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement;
+  const lightboxClose = document.getElementById('lightbox-close');
+
+  items.forEach((item) => {
+    item.addEventListener('click', () => {
+      const img = item.querySelector('img');
+      if (img && lightbox && lightboxImg) {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightbox.classList.remove('hidden');
+        lightbox.classList.add('flex');
+      }
+    });
+  });
+
+  function closeLightbox() {
+    lightbox?.classList.add('hidden');
+    lightbox?.classList.remove('flex');
+  }
+
+  lightboxClose?.addEventListener('click', closeLightbox);
+  lightbox?.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeLightbox();
+  });
+</script>

@@ -1,0 +1,49 @@
+---
+import Button from '@/components/ui/Button.astro';
+---
+
+<section class="bg-[#0F2035] py-16 lg:py-24 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <!-- Text -->
+      <div>
+        <div class="w-16 h-1 bg-amber mb-8"></div>
+        <h2 class="text-3xl lg:text-4xl font-display font-bold text-white leading-tight">
+          Trusted by Premier League Professionals
+        </h2>
+        <p class="mt-6 text-lg lg:text-xl text-white/70 font-display italic leading-relaxed">
+          &ldquo;RMD Flooring transformed the home of former England and Premier League
+          footballer Darren Bent with a complete Karndean installation — finished
+          to the highest standard.&rdquo;
+        </p>
+        <p class="mt-6 text-white/60 leading-relaxed">
+          When Darren Bent needed luxury flooring for his home, he turned to RMD
+          Flooring. The project showcased the team&rsquo;s ability to deliver
+          flawless results at scale — precision cutting, expert subfloor
+          preparation, and an immaculate finish throughout every room.
+        </p>
+        <div class="mt-8">
+          <Button href="/testimonials/" variant="secondary" size="md" class="border-amber text-amber hover:bg-amber hover:text-navy">
+            Read the Full Story
+          </Button>
+        </div>
+      </div>
+
+      <!-- Image -->
+      <div class="relative">
+        <div class="rounded-xl overflow-hidden shadow-2xl">
+          <img
+            src="/images/gallery/featured-project.jpg"
+            alt="Karndean luxury vinyl flooring installed in open-plan living area by RMD Flooring"
+            width="800"
+            height="600"
+            loading="lazy"
+            class="w-full h-auto object-cover"
+          />
+        </div>
+        <!-- Decorative accent -->
+        <div class="absolute -bottom-4 -right-4 w-24 h-24 border-2 border-amber/30 rounded-xl -z-0"></div>
+      </div>
+    </div>
+  </div>
+</section>

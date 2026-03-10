@@ -1,11 +1,37 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { siteConfig } from '@/data/siteConfig';
-import { buildService } from '@/lib/schema';
+import { buildService, buildFAQPage } from '@/lib/schema';
+import PageHero from '@/components/sections/PageHero.astro';
+import Button from '@/components/ui/Button.astro';
+import ContactCTA from '@/components/sections/ContactCTA.astro';
 
-const title = `LVT Flooring Installation | Luxury Vinyl Tile Specialists, West Midlands`;
+const title = 'LVT Flooring Installation | Luxury Vinyl Specialists, West Midlands';
 const description = 'Professional LVT flooring installation across the West Midlands. Karndean, Amtico, Invictus and more. Subfloor preparation, levelling and wet room flooring services.';
 const canonical = siteConfig.url + '/lvt-flooring/';
+
+const faqs = [
+  {
+    question: 'What is LVT flooring?',
+    answer: 'LVT (luxury vinyl tile) is a premium flooring material designed to replicate the look and feel of natural wood, stone and ceramic at a fraction of the cost. It is waterproof, durable, warm underfoot and compatible with underfloor heating.',
+  },
+  {
+    question: 'Which LVT brands do you install?',
+    answer: 'We install all leading LVT brands including Karndean, Amtico, Invictus, Brampton Chase and Project Floors. We are happy to source any specific product to meet your design requirements.',
+  },
+  {
+    question: 'Can LVT be fitted in wet rooms?',
+    answer: 'Yes. With the correct waterproof subfloor preparation and specialist adhesives, LVT is an excellent choice for wet rooms, shower rooms and bathrooms. We carry out all tanking and preparation work as part of the installation.',
+  },
+  {
+    question: 'How important is subfloor preparation?',
+    answer: 'It is the single most important factor in a long-lasting LVT installation. We level, smooth and prime every subfloor — removing old adhesive residue, filling imperfections and ensuring a perfectly flat surface before any flooring is laid.',
+  },
+  {
+    question: 'How long does LVT flooring last?',
+    answer: 'Professionally installed LVT typically lasts 15–25 years depending on the product and usage. Premium brands like Karndean and Amtico offer wear layers and warranties that ensure exceptional longevity.',
+  },
+];
 
 const schemaData = [
   buildService(
@@ -13,17 +39,149 @@ const schemaData = [
     'Professional luxury vinyl tile installation including subfloor preparation, levelling and wet room flooring across the West Midlands.',
     '/lvt-flooring/'
   ),
+  buildFAQPage(faqs),
 ];
 ---
 
 <BaseLayout title={title} description={description} canonical={canonical} schemaData={schemaData}>
+  <PageHero
+    title="LVT Flooring Specialists, West Midlands"
+    breadcrumbs={[
+      { label: 'Home', href: '/' },
+      { label: 'LVT Flooring' },
+    ]}
+  />
+
+  <!-- What is LVT -->
   <section class="py-16 lg:py-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h1 class="text-3xl lg:text-5xl font-display font-bold text-navy">
-        LVT Flooring
-      </h1>
-      <p class="mt-4 text-lg text-mid-grey">Page content coming soon.</p>
-      <!-- TODO: build sections — LVT Explainer, Subfloor Prep, Wet Rooms, FAQ, CTA -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div>
+          <h2 class="text-3xl font-display font-bold text-navy mb-6">
+            What is Luxury Vinyl Tile Flooring?
+          </h2>
+          <div class="text-charcoal space-y-4 leading-relaxed">
+            <p>
+              Luxury vinyl tile — commonly known as LVT — is an engineered flooring
+              material that uses high-definition printing and textured surface layers
+              to replicate the appearance of natural wood, stone and ceramic. The
+              result is a floor that looks and feels authentic, but outperforms
+              natural materials on durability, maintenance and cost.
+            </p>
+            <p>
+              Premium LVT brands like <a href="/karndean-flooring/" class="text-amber hover:text-amber-light underline transition-all duration-200">Karndean</a>
+              and <a href="/amtico-flooring/" class="text-amber hover:text-amber-light underline transition-all duration-200">Amtico</a>
+              lead the market, but we also install excellent products from
+              <strong>Invictus</strong>, <strong>Brampton Chase</strong> and
+              <strong>Project Floors</strong> to suit every budget and taste.
+            </p>
+            <p>
+              LVT is 100% waterproof, scratch-resistant, warm underfoot and
+              compatible with underfloor heating — making it the ideal choice for
+              kitchens, bathrooms, hallways and living spaces throughout the home.
+            </p>
+          </div>
+        </div>
+        <div class="rounded-xl overflow-hidden shadow-lg">
+          <img
+            src="/images/gallery/lvt-feature.jpg"
+            alt="Luxury vinyl tile flooring with wood-effect finish in modern living space, West Midlands"
+            width="800"
+            height="600"
+            loading="lazy"
+            class="w-full h-auto object-cover"
+          />
+        </div>
+      </div>
     </div>
   </section>
+
+  <!-- Subfloor Preparation -->
+  <section class="bg-off-white py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div class="order-2 lg:order-1 rounded-xl overflow-hidden shadow-lg">
+          <img
+            src="/images/gallery/subfloor-prep.jpg"
+            alt="Professional subfloor preparation and levelling before LVT installation"
+            width="800"
+            height="600"
+            loading="lazy"
+            class="w-full h-auto object-cover"
+          />
+        </div>
+        <div class="order-1 lg:order-2">
+          <h2 class="text-3xl font-display font-bold text-navy mb-6">
+            Expert Subfloor Preparation
+          </h2>
+          <div class="text-charcoal space-y-4 leading-relaxed">
+            <p>
+              The quality of any LVT installation is only as good as the subfloor
+              beneath it. That is why we invest significant time in preparation —
+              it is the foundation of a floor that looks great and lasts for decades.
+            </p>
+            <p>
+              Our preparation process includes removing old floor coverings and
+              adhesive residue, levelling uneven surfaces with professional-grade
+              compounds, priming for optimal adhesion, and moisture testing on
+              concrete subfloors.
+            </p>
+            <p>
+              This attention to detail is what separates professional installation
+              from DIY — and it is why our customers never experience the gaps,
+              lifting or premature wear that comes from shortcuts.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Wet Rooms -->
+  <section class="py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl font-display font-bold text-navy mb-6">
+          Wet Room LVT Installation
+        </h2>
+        <div class="text-charcoal space-y-4 leading-relaxed">
+          <p>
+            LVT is an outstanding choice for wet rooms, shower rooms and bathrooms.
+            Unlike ceramic tile, it is warm underfoot, slip-resistant and far more
+            forgiving on dropped items. With the correct waterproof membrane and
+            tanking system, LVT delivers a seamless, hygienic surface that handles
+            daily water exposure with ease.
+          </p>
+          <p>
+            We carry out the complete installation — from waterproof membrane
+            application and subfloor preparation to precision cutting around
+            drainage and fittings. The result is a modern, practical bathroom floor
+            that looks as good as it performs.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="bg-off-white py-16 lg:py-24">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-display font-bold text-navy mb-8 text-center">Frequently Asked Questions</h2>
+      <div class="space-y-4">
+        {faqs.map((faq) => (
+          <details class="group bg-white rounded-xl shadow-sm border border-stone-200 overflow-hidden">
+            <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-heading font-semibold text-navy hover:text-navy-light transition-all duration-200">
+              {faq.question}
+              <svg class="w-5 h-5 text-amber shrink-0 ml-4 group-open:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </summary>
+            <div class="px-6 pb-6 text-charcoal leading-relaxed">{faq.answer}</div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <ContactCTA />
 </BaseLayout>
