@@ -1,0 +1,199 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { siteConfig } from '@/data/siteConfig';
+import { buildOrganization } from '@/lib/schema';
+import PageHero from '@/components/sections/PageHero.astro';
+import Button from '@/components/ui/Button.astro';
+import ContactCTA from '@/components/sections/ContactCTA.astro';
+
+const title = 'About RMD Flooring | Family-Run Flooring Specialists, Tamworth';
+const description = 'Meet the team behind RMD Flooring. Ryan and Kerry bring 20+ years of luxury flooring expertise to homes across the West Midlands. Approved Karndean and Amtico installers.';
+const canonical = siteConfig.url + '/about/';
+
+const schemaData = [buildOrganization()];
+
+const brands = [
+  { name: 'Karndean', file: 'karndean', href: '/karndean-flooring/' },
+  { name: 'Amtico', file: 'amtico', href: '/amtico-flooring/' },
+  { name: 'Invictus', file: 'invictus', href: '/lvt-flooring/' },
+  { name: 'Brampton Chase', file: 'brampton-chase', href: '/lvt-flooring/' },
+  { name: 'Project Floors', file: 'project-floors', href: '/lvt-flooring/' },
+];
+---
+
+<BaseLayout title={title} description={description} canonical={canonical} schemaData={schemaData}>
+  <PageHero
+    title="About RMD Flooring"
+    breadcrumbs={[
+      { label: 'Home', href: '/' },
+      { label: 'About' },
+    ]}
+  />
+
+  <!-- The Story -->
+  <section class="py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div>
+          <h2 class="text-3xl font-display font-bold text-navy mb-6">
+            The RMD Story
+          </h2>
+          <div class="text-charcoal space-y-4 leading-relaxed">
+            <p>
+              RMD Flooring was founded by {siteConfig.founders.join(' and ')} —
+              a husband-and-wife team who turned a shared passion for quality
+              craftsmanship into a thriving family business. What started as a
+              self-employed flooring service has grown into one of the most trusted
+              installation companies in the West Midlands.
+            </p>
+            <p>
+              With over {siteConfig.yearsExperience} years of hands-on experience,
+              Ryan has fitted thousands of floors across homes, showrooms and
+              commercial spaces. Kerry manages the business side — from customer
+              consultations and showroom appointments to sourcing the finest
+              materials from leading manufacturers.
+            </p>
+            <p>
+              Based in {siteConfig.address.locality}, {siteConfig.address.town},
+              the team serves customers across {siteConfig.serviceArea.slice(0, -1).join(', ')} and
+              the wider {siteConfig.serviceArea[siteConfig.serviceArea.length - 1]}.
+              Our dedicated showroom is open Saturdays to the public and by
+              appointment during the week.
+            </p>
+          </div>
+        </div>
+        <div class="rounded-xl overflow-hidden shadow-lg">
+          <img
+            src="/images/about-team.jpg"
+            alt="Ryan and Kerry, founders of RMD Flooring, in their Tamworth showroom"
+            width="800"
+            height="600"
+            loading="lazy"
+            class="w-full h-auto object-cover"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="bg-off-white py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-display font-bold text-navy mb-12 text-center">
+        What We Stand For
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {[
+          {
+            title: 'Quality',
+            description: 'We only work with premium brands and use professional-grade materials. Every floor is fitted to a standard we would be proud to have in our own home.',
+            icon: 'M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z',
+          },
+          {
+            title: 'Honesty',
+            description: 'No hidden costs, no hard sell, no shortcuts. We give honest advice, transparent quotes and realistic timescales — and we stick to them.',
+            icon: 'M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z',
+          },
+          {
+            title: 'Experience',
+            description: `${siteConfig.yearsExperience} years in the trade means we have seen and solved every challenge. From difficult subfloors to complex laying patterns, nothing fazes us.`,
+            icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z',
+          },
+        ].map((value) => (
+          <div class="bg-white rounded-xl shadow-md border border-stone-200 p-6 lg:p-8 text-center">
+            <div class="w-14 h-14 rounded-full bg-amber/10 flex items-center justify-center mx-auto mb-5">
+              <svg class="w-7 h-7 text-amber" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d={value.icon} />
+              </svg>
+            </div>
+            <h3 class="text-lg font-heading font-semibold text-navy mb-2">{value.title}</h3>
+            <p class="text-sm text-mid-grey leading-relaxed">{value.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Darren Bent -->
+  <section class="bg-[#0F2035] py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center">
+        <div class="w-16 h-1 bg-amber mx-auto mb-8"></div>
+        <h2 class="text-3xl font-display font-bold text-white mb-6">
+          The Darren Bent Project
+        </h2>
+        <div class="text-white/70 space-y-4 leading-relaxed">
+          <p>
+            When former England and Premier League striker Darren Bent needed
+            luxury flooring for his home, he chose RMD Flooring. The project
+            involved a complete Karndean installation across multiple rooms —
+            each one demanding precision cutting, meticulous subfloor preparation
+            and an immaculate finish.
+          </p>
+          <p>
+            It was a project that showcased everything RMD stands for: attention
+            to detail, reliability and a result that exceeds expectations. Darren
+            was so impressed that he recommended us to friends and family —
+            the highest compliment a tradesman can receive.
+          </p>
+        </div>
+        <div class="mt-8">
+          <Button href="/testimonials/" variant="secondary" size="md" class="border-amber text-amber hover:bg-amber hover:text-navy">
+            Read Customer Reviews
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Guarantee -->
+  <section class="py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-amber/10 rounded-2xl p-8 lg:p-12 text-center max-w-3xl mx-auto">
+        <div class="w-14 h-14 rounded-full bg-amber/20 flex items-center justify-center mx-auto mb-5">
+          <svg class="w-7 h-7 text-amber" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+          </svg>
+        </div>
+        <h2 class="text-2xl font-display font-bold text-navy mb-4">
+          {siteConfig.guarantee}
+        </h2>
+        <p class="text-charcoal leading-relaxed">
+          Every installation comes with our {siteConfig.guarantee.toLowerCase()}.
+          If anything is not right with the fitting, we come back and put it
+          right — no questions asked. This is on top of any manufacturer
+          warranties that apply to the flooring product itself.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Brands -->
+  <section class="bg-off-white py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-display font-bold text-navy mb-4">
+        Brands We Work With
+      </h2>
+      <p class="text-mid-grey mb-10 max-w-2xl mx-auto">
+        We are approved installers and trusted partners of the UK&rsquo;s leading
+        luxury flooring manufacturers.
+      </p>
+      <div class="flex flex-wrap items-center justify-center gap-8 lg:gap-12">
+        {brands.map((brand) => (
+          <a href={brand.href} class="group">
+            <img
+              src={`/images/brands/${brand.file}.png`}
+              alt={`${brand.name} flooring logo — approved installer`}
+              width="140"
+              height="50"
+              loading="lazy"
+              class="h-10 w-auto opacity-60 group-hover:opacity-100 transition-all duration-200"
+            />
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <ContactCTA />
+</BaseLayout>

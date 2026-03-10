@@ -1,0 +1,32 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { siteConfig } from '@/data/siteConfig';
+import { buildLocalBusiness, buildOrganization, buildWebSite } from '@/lib/schema';
+import HeroSection from '@/components/sections/HeroSection.astro';
+import ServicesGrid from '@/components/sections/ServicesGrid.astro';
+import TrustBar from '@/components/sections/TrustBar.astro';
+import FeaturedProject from '@/components/sections/FeaturedProject.astro';
+import ReviewsSection from '@/components/sections/ReviewsSection.astro';
+import ShowroomBanner from '@/components/sections/ShowroomBanner.astro';
+import ContactCTA from '@/components/sections/ContactCTA.astro';
+
+const title = `${siteConfig.name} | Luxury Flooring Installers, West Midlands`;
+const description = 'Premium luxury flooring installation in Tamworth and the West Midlands. Approved Karndean and Amtico installers with 20+ years experience. Get a free quote today.';
+const canonical = siteConfig.url + '/';
+
+const schemaData = [
+  buildLocalBusiness(),
+  buildOrganization(),
+  buildWebSite(),
+];
+---
+
+<BaseLayout title={title} description={description} canonical={canonical} schemaData={schemaData} isHomepage={true}>
+  <HeroSection />
+  <ServicesGrid />
+  <TrustBar />
+  <FeaturedProject />
+  <ReviewsSection />
+  <ShowroomBanner />
+  <ContactCTA />
+</BaseLayout>

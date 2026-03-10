@@ -1,0 +1,36 @@
+---
+import { siteConfig } from '@/data/siteConfig';
+import Button from '@/components/ui/Button.astro';
+
+const telUrl = `tel:${siteConfig.phone.showroom.replace(/\s/g, '')}`;
+---
+
+<section class="py-16 lg:py-24 bg-off-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl lg:text-4xl font-display font-bold text-navy">
+        Ready to Transform Your Space?
+      </h2>
+      <p class="mt-4 text-lg text-mid-grey">
+        Get in touch for a free, no-obligation quote. Call our showroom or fill
+        in our quick enquiry form and we&rsquo;ll get back to you within 24 hours.
+      </p>
+
+      <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <Button href="/contact/" variant="primary" size="lg" class="w-full sm:w-auto">
+          Request a Quote
+        </Button>
+        <Button href={telUrl} variant="secondary" size="lg" class="w-full sm:w-auto">
+          {siteConfig.phone.showroom}
+        </Button>
+      </div>
+
+      <p class="mt-6 text-sm text-mid-grey">
+        Or email us at{' '}
+        <a href={`mailto:${siteConfig.email}`} class="text-amber hover:text-amber-light transition-all duration-200 underline">
+          {siteConfig.email}
+        </a>
+      </p>
+    </div>
+  </div>
+</section>

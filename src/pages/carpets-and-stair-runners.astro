@@ -1,0 +1,159 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { siteConfig } from '@/data/siteConfig';
+import { buildService } from '@/lib/schema';
+import PageHero from '@/components/sections/PageHero.astro';
+import Button from '@/components/ui/Button.astro';
+import ContactCTA from '@/components/sections/ContactCTA.astro';
+
+const title = 'Carpets & Stair Runners | Expert Fitting, West Midlands';
+const description = 'Quality carpet fitting and bespoke stair runners in Tamworth and the West Midlands. In-store tape binding and whipping service. Visit our showroom for samples.';
+const canonical = siteConfig.url + '/carpets-and-stair-runners/';
+
+const schemaData = [
+  buildService(
+    'Carpet and Stair Runner Fitting',
+    'Quality carpet fitting and bespoke stair runners with in-store tape binding and whipping across the West Midlands.',
+    '/carpets-and-stair-runners/'
+  ),
+];
+
+const galleryImages = [
+  { src: '/images/gallery/carpet-01.jpg', alt: 'Premium wool carpet fitted in master bedroom, Sutton Coldfield' },
+  { src: '/images/gallery/carpet-02.jpg', alt: 'Neutral loop pile carpet in living room, Birmingham' },
+  { src: '/images/gallery/runner-01.jpg', alt: 'Bespoke stair runner fitted in period home, Tamworth' },
+  { src: '/images/gallery/runner-02.jpg', alt: 'Striped stair runner with brass stair rods, Lichfield' },
+];
+---
+
+<BaseLayout title={title} description={description} canonical={canonical} schemaData={schemaData}>
+  <PageHero
+    title="Carpets & Stair Runners"
+    breadcrumbs={[
+      { label: 'Home', href: '/' },
+      { label: 'Carpets & Stair Runners' },
+    ]}
+  />
+
+  <!-- Carpet Fitting -->
+  <section class="py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div>
+          <h2 class="text-3xl font-display font-bold text-navy mb-6">
+            Professional Carpet Fitting
+          </h2>
+          <div class="text-charcoal space-y-4 leading-relaxed">
+            <p>
+              A quality carpet deserves quality fitting. At RMD Flooring, we bring
+              the same precision and care to carpet installation as we do to our
+              luxury vinyl work. Whether you are carpeting a single bedroom or an
+              entire home, we ensure a smooth, taut finish with invisible seams.
+            </p>
+            <p>
+              We work with a wide range of carpet types — from hardwearing loop
+              piles for busy family homes to luxurious wool blends for bedrooms and
+              living spaces. Visit our Tamworth showroom to feel samples, compare
+              textures and choose the right carpet for your home.
+            </p>
+            <p>
+              Every installation includes furniture moving, old carpet removal and
+              disposal, gripper rod fitting and door trimming where needed. We leave
+              your home clean and tidy — ready to enjoy from day one.
+            </p>
+          </div>
+        </div>
+        <div class="rounded-xl overflow-hidden shadow-lg">
+          <img
+            src="/images/gallery/carpet-feature.jpg"
+            alt="Professional carpet fitting in progress in residential bedroom, Tamworth"
+            width="800"
+            height="600"
+            loading="lazy"
+            class="w-full h-auto object-cover"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stair Runners -->
+  <section class="bg-off-white py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div class="order-2 lg:order-1 rounded-xl overflow-hidden shadow-lg">
+          <img
+            src="/images/gallery/runner-feature.jpg"
+            alt="Bespoke stair runner with whipped edges fitted in period hallway, Lichfield"
+            width="800"
+            height="600"
+            loading="lazy"
+            class="w-full h-auto object-cover"
+          />
+        </div>
+        <div class="order-1 lg:order-2">
+          <h2 class="text-3xl font-display font-bold text-navy mb-6">
+            Bespoke Stair Runners
+          </h2>
+          <div class="text-charcoal space-y-4 leading-relaxed">
+            <p>
+              A well-fitted stair runner transforms a hallway — adding warmth,
+              texture and character to one of the most visible areas of your home.
+              We supply and fit runners in a range of styles, from classic stripes
+              and geometric patterns to natural sisal and wool.
+            </p>
+            <p>
+              Our fitting service includes precise measurement, stair rod supply
+              and fitting, and careful alignment to ensure the pattern runs
+              perfectly from top to bottom. We work with both straight and curved
+              staircases.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- In-store Finishing -->
+  <section class="py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl font-display font-bold text-navy mb-6">
+          In-Store Finishing: Tape Binding & Whipping
+        </h2>
+        <div class="text-charcoal space-y-4 leading-relaxed">
+          <p>
+            We offer professional carpet finishing services from our Tamworth
+            showroom. <strong>Tape binding</strong> gives your carpet a clean,
+            modern edge — perfect for rugs and runners cut from broadloom.
+            <strong>Whipping</strong> provides a traditional hand-finished look
+            with a stitched border in a matching or contrasting colour.
+          </p>
+          <p>
+            Both services are available on carpets purchased from us or carpet
+            you bring in. Turnaround is typically 3–5 working days.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="bg-off-white py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-display font-bold text-navy mb-8 text-center">Our Carpet & Runner Work</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {galleryImages.map((img) => (
+          <div class="rounded-xl overflow-hidden shadow-md">
+            <img src={img.src} alt={img.alt} width="600" height="400" loading="lazy" class="w-full h-64 object-cover hover:scale-105 transition-transform duration-300" />
+          </div>
+        ))}
+      </div>
+      <div class="text-center mt-8">
+        <Button href="/gallery/" variant="secondary" size="md">View Full Gallery</Button>
+      </div>
+    </div>
+  </section>
+
+  <ContactCTA />
+</BaseLayout>

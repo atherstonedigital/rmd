@@ -1,0 +1,41 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { siteConfig } from '@/data/siteConfig';
+import Button from '@/components/ui/Button.astro';
+
+const title = 'Thank You | RMD Flooring';
+const description = 'Thank you for contacting RMD Flooring. We will be in touch within 24 hours.';
+const canonical = siteConfig.url + '/thank-you/';
+---
+
+<BaseLayout title={title} description={description} canonical={canonical}>
+  <section class="py-24 lg:py-32">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="w-16 h-16 rounded-full bg-amber/10 flex items-center justify-center mx-auto mb-6">
+        <svg class="w-8 h-8 text-amber" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+        </svg>
+      </div>
+      <h1 class="text-3xl lg:text-4xl font-display font-bold text-navy">
+        Thank You for Your Enquiry
+      </h1>
+      <p class="mt-4 text-lg text-mid-grey">
+        We&rsquo;ve received your message and will get back to you within 24 hours.
+        If your enquiry is urgent, please call us directly.
+      </p>
+      <div class="mt-4 text-charcoal">
+        <a
+          href={`tel:${siteConfig.phone.showroom.replace(/\s/g, '')}`}
+          class="text-amber hover:text-amber-light font-semibold transition-all duration-200"
+        >
+          {siteConfig.phone.showroom}
+        </a>
+      </div>
+      <div class="mt-8">
+        <Button href="/" variant="primary" size="md">
+          Back to Homepage
+        </Button>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

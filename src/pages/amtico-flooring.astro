@@ -1,0 +1,189 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { siteConfig } from '@/data/siteConfig';
+import { buildService, buildFAQPage } from '@/lib/schema';
+import PageHero from '@/components/sections/PageHero.astro';
+import Button from '@/components/ui/Button.astro';
+import ContactCTA from '@/components/sections/ContactCTA.astro';
+
+const title = 'Amtico Flooring Installation | Expert Fitters, West Midlands';
+const description = 'Expert Amtico flooring installation in Tamworth and across the West Midlands. Signature, Form and Spacia ranges fitted with precision. Book a free consultation.';
+const canonical = siteConfig.url + '/amtico-flooring/';
+
+const faqs = [
+  {
+    question: 'What Amtico ranges do you install?',
+    answer: 'We install the full Amtico range including Signature, Form, Spacia and Access. Each offers different design options from natural wood and stone effects to bold abstract patterns. Visit our showroom to see samples in person.',
+  },
+  {
+    question: 'How does Amtico compare to Karndean?',
+    answer: 'Both are premium luxury vinyl brands with excellent durability and realism. Amtico tends to offer more contemporary design options and unique laying patterns, while Karndean has a wider range of traditional wood and stone effects. Both carry our 2-year fitting guarantee.',
+  },
+  {
+    question: 'Can Amtico be fitted over underfloor heating?',
+    answer: 'Yes. All Amtico products are compatible with underfloor heating systems. We ensure the subfloor temperature does not exceed the recommended limit and allow proper acclimatisation before fitting.',
+  },
+  {
+    question: 'How long does Amtico flooring last?',
+    answer: 'With proper installation and care, Amtico flooring typically lasts 20–25 years or more. It comes with commercial-grade wear layers and is backed by manufacturer warranties of up to 20 years for residential use.',
+  },
+  {
+    question: 'Do you offer bespoke Amtico laying patterns?',
+    answer: 'Absolutely. We specialise in herringbone, chevron, basketweave and border designs. Amtico Signature in particular offers creative freedom with mixing formats, colours and textures for a truly unique floor.',
+  },
+];
+
+const schemaData = [
+  buildService(
+    'Amtico Flooring Installation',
+    'Expert Amtico fitting across the West Midlands. Signature, Form and Spacia ranges with bespoke laying patterns.',
+    '/amtico-flooring/'
+  ),
+  buildFAQPage(faqs),
+];
+
+const benefits = [
+  {
+    title: 'Manufacturer Warranty Valid',
+    description: 'Professional installation by an experienced fitter protects your Amtico warranty and ensures a lasting finish.',
+    icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
+  },
+  {
+    title: 'Bespoke Design Consultation',
+    description: 'We help you choose the right range, colours and laying pattern to complement your space — from classic herringbone to bold contemporary designs.',
+    icon: 'M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z',
+  },
+  {
+    title: 'Flawless Subfloor Preparation',
+    description: 'Every Amtico installation starts with meticulous subfloor work — levelling, smoothing and priming to ensure a perfect bond and seamless result.',
+    icon: 'M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z',
+  },
+];
+
+const galleryImages = [
+  { src: '/images/gallery/amtico-01.jpg', alt: 'Amtico Spacia wood-effect LVT in dining room, Lichfield' },
+  { src: '/images/gallery/amtico-02.jpg', alt: 'Amtico Signature herringbone flooring in period hallway, Solihull' },
+  { src: '/images/gallery/amtico-03.jpg', alt: 'Amtico Form stone-effect luxury vinyl in bathroom, Tamworth' },
+];
+---
+
+<BaseLayout title={title} description={description} canonical={canonical} schemaData={schemaData}>
+  <PageHero
+    title="Amtico Flooring, West Midlands"
+    breadcrumbs={[
+      { label: 'Home', href: '/' },
+      { label: 'Amtico Flooring' },
+    ]}
+  />
+
+  <!-- What is Amtico -->
+  <section class="py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div>
+          <h2 class="text-3xl font-display font-bold text-navy mb-6">
+            What is Amtico Flooring?
+          </h2>
+          <div class="text-charcoal space-y-4 leading-relaxed">
+            <p>
+              Amtico is a British-made luxury vinyl flooring brand renowned for its
+              design-led approach and exceptional build quality. Every tile and plank
+              is manufactured in the UK using advanced techniques that capture the
+              intricate detail of natural materials.
+            </p>
+            <p>
+              The <strong>Signature</strong> collection leads the range, offering
+              unparalleled creative freedom — mix formats, combine colours and create
+              bespoke borders. <strong>Spacia</strong> delivers the same premium
+              finish in a wide-plank format, while <strong>Form</strong> brings
+              contemporary stone and concrete effects to modern interiors.
+            </p>
+            <p>
+              Amtico is waterproof, hygienic and warm underfoot — a premium
+              alternative to natural wood and stone that outperforms on durability,
+              maintenance and comfort. It is compatible with underfloor heating and
+              carries residential warranties of up to 20 years.
+            </p>
+          </div>
+        </div>
+        <div class="rounded-xl overflow-hidden shadow-lg">
+          <img
+            src="/images/gallery/amtico-feature.jpg"
+            alt="Amtico Signature luxury vinyl flooring detail showing realistic wood grain"
+            width="800"
+            height="600"
+            loading="lazy"
+            class="w-full h-auto object-cover"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="bg-off-white py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-display font-bold text-navy">
+          Why Choose RMD for Your Amtico Installation?
+        </h2>
+        <p class="mt-4 text-lg text-mid-grey max-w-2xl mx-auto">
+          With {siteConfig.yearsExperience} years of experience, we deliver Amtico
+          installations that look stunning and stand the test of time.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {benefits.map((benefit) => (
+          <div class="bg-white rounded-xl shadow-md border border-stone-200 p-6 lg:p-8 text-center">
+            <div class="w-14 h-14 rounded-full bg-amber/10 flex items-center justify-center mx-auto mb-5">
+              <svg class="w-7 h-7 text-amber" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d={benefit.icon} />
+              </svg>
+            </div>
+            <h3 class="text-lg font-heading font-semibold text-navy mb-2">{benefit.title}</h3>
+            <p class="text-sm text-mid-grey leading-relaxed">{benefit.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-display font-bold text-navy mb-8 text-center">Our Amtico Work</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {galleryImages.map((img) => (
+          <div class="rounded-xl overflow-hidden shadow-md">
+            <img src={img.src} alt={img.alt} width="600" height="400" loading="lazy" class="w-full h-64 object-cover hover:scale-105 transition-transform duration-300" />
+          </div>
+        ))}
+      </div>
+      <div class="text-center mt-8">
+        <Button href="/gallery/" variant="secondary" size="md">View Full Gallery</Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="bg-off-white py-16 lg:py-24">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-display font-bold text-navy mb-8 text-center">Frequently Asked Questions</h2>
+      <div class="space-y-4">
+        {faqs.map((faq) => (
+          <details class="group bg-white rounded-xl shadow-sm border border-stone-200 overflow-hidden">
+            <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-heading font-semibold text-navy hover:text-navy-light transition-all duration-200">
+              {faq.question}
+              <svg class="w-5 h-5 text-amber shrink-0 ml-4 group-open:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </summary>
+            <div class="px-6 pb-6 text-charcoal leading-relaxed">{faq.answer}</div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <ContactCTA />
+</BaseLayout>
