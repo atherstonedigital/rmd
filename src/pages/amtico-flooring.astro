@@ -1,0 +1,29 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { siteConfig } from '@/data/siteConfig';
+import { buildService } from '@/lib/schema';
+
+const title = `Amtico Flooring Installation | Expert Fitters, West Midlands`;
+const description = 'Expert Amtico flooring installation in Tamworth and across the West Midlands. Signature, Form and Spacia ranges fitted with precision. Book a free consultation.';
+const canonical = siteConfig.url + '/amtico-flooring/';
+
+const schemaData = [
+  buildService(
+    'Amtico Flooring Installation',
+    'Expert Amtico fitting across the West Midlands. Signature, Form and Spacia ranges with bespoke laying patterns.',
+    '/amtico-flooring/'
+  ),
+];
+---
+
+<BaseLayout title={title} description={description} canonical={canonical} schemaData={schemaData}>
+  <section class="py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl lg:text-5xl font-display font-bold text-navy">
+        Amtico Flooring
+      </h1>
+      <p class="mt-4 text-lg text-mid-grey">Page content coming soon.</p>
+      <!-- TODO: build sections — What is Amtico, Why Choose Us, Gallery, FAQ, CTA -->
+    </div>
+  </section>
+</BaseLayout>

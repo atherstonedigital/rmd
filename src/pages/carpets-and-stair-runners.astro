@@ -1,0 +1,29 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { siteConfig } from '@/data/siteConfig';
+import { buildService } from '@/lib/schema';
+
+const title = `Carpets & Stair Runners | Expert Fitting, West Midlands`;
+const description = 'Quality carpet fitting and bespoke stair runners in Tamworth and the West Midlands. In-store tape binding and whipping service. Visit our showroom for samples.';
+const canonical = siteConfig.url + '/carpets-and-stair-runners/';
+
+const schemaData = [
+  buildService(
+    'Carpet and Stair Runner Fitting',
+    'Quality carpet fitting and bespoke stair runners with in-store tape binding and whipping across the West Midlands.',
+    '/carpets-and-stair-runners/'
+  ),
+];
+---
+
+<BaseLayout title={title} description={description} canonical={canonical} schemaData={schemaData}>
+  <section class="py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl lg:text-5xl font-display font-bold text-navy">
+        Carpets & Stair Runners
+      </h1>
+      <p class="mt-4 text-lg text-mid-grey">Page content coming soon.</p>
+      <!-- TODO: build sections — Carpet Fitting, Stair Runners, In-store Finishing, Gallery, CTA -->
+    </div>
+  </section>
+</BaseLayout>

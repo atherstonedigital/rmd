@@ -1,0 +1,23 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { siteConfig } from '@/data/siteConfig';
+import { buildOrganization } from '@/lib/schema';
+
+const title = `About RMD Flooring | Family-Run Flooring Specialists, Tamworth`;
+const description = 'Meet the team behind RMD Flooring. Ryan and Kerry bring 20+ years of luxury flooring expertise to homes across the West Midlands. Approved Karndean and Amtico installers.';
+const canonical = siteConfig.url + '/about/';
+
+const schemaData = [buildOrganization()];
+---
+
+<BaseLayout title={title} description={description} canonical={canonical} schemaData={schemaData}>
+  <section class="py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl lg:text-5xl font-display font-bold text-navy">
+        About RMD Flooring
+      </h1>
+      <p class="mt-4 text-lg text-mid-grey">Page content coming soon.</p>
+      <!-- TODO: build sections — Hero, Story, Values, Darren Bent, Guarantee, Brands -->
+    </div>
+  </section>
+</BaseLayout>

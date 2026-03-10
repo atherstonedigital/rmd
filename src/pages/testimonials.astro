@@ -1,0 +1,24 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { siteConfig } from '@/data/siteConfig';
+import { testimonials } from '@/data/testimonials';
+import { buildAggregateRating } from '@/lib/schema';
+
+const title = `Customer Reviews & Testimonials | RMD Flooring, West Midlands`;
+const description = 'Read what our customers say about RMD Flooring. 5-star Google reviews from homeowners across the West Midlands. See why clients like Darren Bent trust us with their flooring.';
+const canonical = siteConfig.url + '/testimonials/';
+
+const schemaData = [buildAggregateRating(testimonials)];
+---
+
+<BaseLayout title={title} description={description} canonical={canonical} schemaData={schemaData}>
+  <section class="py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl lg:text-5xl font-display font-bold text-navy">
+        Customer Reviews
+      </h1>
+      <p class="mt-4 text-lg text-mid-grey">Testimonials coming soon.</p>
+      <!-- TODO: build sections — Darren Bent Feature, Google Reviews, Written Testimonials -->
+    </div>
+  </section>
+</BaseLayout>

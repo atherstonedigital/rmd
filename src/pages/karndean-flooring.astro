@@ -1,0 +1,29 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { siteConfig } from '@/data/siteConfig';
+import { buildService } from '@/lib/schema';
+
+const title = `Karndean Flooring Installation | Approved Installer, West Midlands`;
+const description = 'Approved Karndean installer in Tamworth and the West Midlands. Expert fitting of luxury vinyl tile and plank flooring with realistic wood and stone effects. Free quotes available.';
+const canonical = siteConfig.url + '/karndean-flooring/';
+
+const schemaData = [
+  buildService(
+    'Karndean Flooring Installation',
+    'Approved Karndean installer offering expert fitting of luxury vinyl tile and plank flooring across the West Midlands.',
+    '/karndean-flooring/'
+  ),
+];
+---
+
+<BaseLayout title={title} description={description} canonical={canonical} schemaData={schemaData}>
+  <section class="py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl lg:text-5xl font-display font-bold text-navy">
+        Karndean Flooring
+      </h1>
+      <p class="mt-4 text-lg text-mid-grey">Page content coming soon.</p>
+      <!-- TODO: build sections — What is Karndean, Why Approved Installer, Gallery, FAQ, CTA -->
+    </div>
+  </section>
+</BaseLayout>

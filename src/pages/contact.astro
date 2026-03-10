@@ -1,0 +1,23 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { siteConfig } from '@/data/siteConfig';
+import { buildLocalBusiness } from '@/lib/schema';
+
+const title = `Contact RMD Flooring | Get a Free Quote, Tamworth`;
+const description = 'Get in touch with RMD Flooring for a free flooring quote. Visit our Tamworth showroom or call us today. Serving Birmingham, Sutton Coldfield, Lichfield and the West Midlands.';
+const canonical = siteConfig.url + '/contact/';
+
+const schemaData = [buildLocalBusiness()];
+---
+
+<BaseLayout title={title} description={description} canonical={canonical} schemaData={schemaData}>
+  <section class="py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl lg:text-5xl font-display font-bold text-navy">
+        Contact Us
+      </h1>
+      <p class="mt-4 text-lg text-mid-grey">Contact form coming soon.</p>
+      <!-- TODO: build sections — Netlify Form, Map, Address, Phone, Opening Hours -->
+    </div>
+  </section>
+</BaseLayout>

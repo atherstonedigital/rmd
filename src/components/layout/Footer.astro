@@ -1,0 +1,133 @@
+---
+import { siteConfig, navLinks } from '@/data/siteConfig';
+
+const currentYear = new Date().getFullYear();
+
+const brandLogos = [
+  { name: 'Karndean', alt: 'Karndean approved installer logo' },
+  { name: 'Amtico', alt: 'Amtico approved installer logo' },
+  { name: 'Invictus', alt: 'Invictus luxury vinyl flooring logo' },
+  { name: 'Brampton Chase', alt: 'Brampton Chase flooring logo' },
+  { name: 'Project Floors', alt: 'Project Floors logo' },
+];
+---
+
+<footer class="bg-navy text-white">
+  <!-- Main Footer -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+      <!-- About + Address -->
+      <div>
+        <h3 class="text-xl font-display font-bold text-white mb-4">
+          {siteConfig.name}
+        </h3>
+        <p class="text-white/70 text-sm leading-relaxed mb-6">
+          Family-run luxury flooring specialists with {siteConfig.yearsExperience} years
+          of experience. Approved installers of Karndean, Amtico and premium LVT
+          brands across the West Midlands.
+        </p>
+        <address class="not-italic text-sm text-white/70 space-y-1">
+          <p>{siteConfig.address.street}</p>
+          <p>{siteConfig.address.locality}</p>
+          <p>{siteConfig.address.town}, {siteConfig.address.postcode}</p>
+        </address>
+      </div>
+
+      <!-- Navigation -->
+      <div>
+        <h3 class="text-lg font-heading font-semibold text-white mb-4">
+          Quick Links
+        </h3>
+        <nav aria-label="Footer navigation">
+          <ul class="space-y-2">
+            {navLinks.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="text-sm text-white/70 hover:text-amber transition-all duration-200"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Contact Details + Hours -->
+      <div>
+        <h3 class="text-lg font-heading font-semibold text-white mb-4">
+          Contact Us
+        </h3>
+        <div class="space-y-3 text-sm text-white/70">
+          <div>
+            <p class="font-medium text-white/90">Showroom</p>
+            <a
+              href={`tel:${siteConfig.phone.showroom.replace(/\s/g, '')}`}
+              class="hover:text-amber transition-all duration-200"
+            >
+              {siteConfig.phone.showroom}
+            </a>
+          </div>
+          <div>
+            <p class="font-medium text-white/90">Mobile</p>
+            <a
+              href={`tel:${siteConfig.phone.mobile.replace(/\s/g, '')}`}
+              class="hover:text-amber transition-all duration-200"
+            >
+              {siteConfig.phone.mobile}
+            </a>
+          </div>
+          <div>
+            <p class="font-medium text-white/90">Email</p>
+            <a
+              href={`mailto:${siteConfig.email}`}
+              class="hover:text-amber transition-all duration-200"
+            >
+              {siteConfig.email}
+            </a>
+          </div>
+
+          <div class="pt-2">
+            <p class="font-medium text-white/90 mb-1">Opening Hours</p>
+            {siteConfig.openingHours.map((item) => (
+              <p>
+                <span class="text-white/90">{item.label}:</span> {item.hours}
+              </p>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Brand Logos Strip -->
+  <div class="border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <p class="text-xs text-white/50 text-center mb-4 uppercase tracking-wider">
+        Approved Installer
+      </p>
+      <div class="flex flex-wrap items-center justify-center gap-8">
+        {brandLogos.map((brand) => (
+          <img
+            src={`/images/brands/${brand.name.toLowerCase().replace(/\s/g, '-')}.png`}
+            alt={brand.alt}
+            width="120"
+            height="40"
+            loading="lazy"
+            class="h-8 w-auto opacity-60 hover:opacity-100 transition-all duration-200"
+          />
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- Copyright -->
+  <div class="border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <p class="text-xs text-white/50 text-center">
+        &copy; {currentYear} {siteConfig.legalName}. All rights reserved.
+      </p>
+    </div>
+  </div>
+</footer>

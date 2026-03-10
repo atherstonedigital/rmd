@@ -1,0 +1,29 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { siteConfig } from '@/data/siteConfig';
+import { buildService } from '@/lib/schema';
+
+const title = `LVT Flooring Installation | Luxury Vinyl Tile Specialists, West Midlands`;
+const description = 'Professional LVT flooring installation across the West Midlands. Karndean, Amtico, Invictus and more. Subfloor preparation, levelling and wet room flooring services.';
+const canonical = siteConfig.url + '/lvt-flooring/';
+
+const schemaData = [
+  buildService(
+    'LVT Flooring Installation',
+    'Professional luxury vinyl tile installation including subfloor preparation, levelling and wet room flooring across the West Midlands.',
+    '/lvt-flooring/'
+  ),
+];
+---
+
+<BaseLayout title={title} description={description} canonical={canonical} schemaData={schemaData}>
+  <section class="py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl lg:text-5xl font-display font-bold text-navy">
+        LVT Flooring
+      </h1>
+      <p class="mt-4 text-lg text-mid-grey">Page content coming soon.</p>
+      <!-- TODO: build sections — LVT Explainer, Subfloor Prep, Wet Rooms, FAQ, CTA -->
+    </div>
+  </section>
+</BaseLayout>

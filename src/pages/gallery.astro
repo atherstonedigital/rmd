@@ -1,0 +1,25 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { siteConfig } from '@/data/siteConfig';
+import { buildImageGallery } from '@/lib/schema';
+
+const title = `Project Gallery | RMD Flooring, West Midlands`;
+const description = 'Browse our gallery of luxury flooring installations across the West Midlands. Karndean, Amtico, LVT, carpets and stair runner projects in homes and commercial spaces.';
+const canonical = siteConfig.url + '/gallery/';
+
+const schemaData = [
+  buildImageGallery([]),
+];
+---
+
+<BaseLayout title={title} description={description} canonical={canonical} schemaData={schemaData}>
+  <section class="py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl lg:text-5xl font-display font-bold text-navy">
+        Our Work
+      </h1>
+      <p class="mt-4 text-lg text-mid-grey">Gallery coming soon.</p>
+      <!-- TODO: build sections — Filter bar, Masonry/Grid Gallery -->
+    </div>
+  </section>
+</BaseLayout>
