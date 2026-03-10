@@ -4,6 +4,7 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
+      "@components/*": ["src/components/*"],
       "@aceternityui/*": ["src/components/react/aceternity/*"],
       "@magicui/*": ["src/components/react/magicui/*"]
     },
