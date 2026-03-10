@@ -3,7 +3,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@aceternityui/*": ["src/components/react/aceternity/*"],
+      "@magicui/*": ["src/components/react/magicui/*"]
     },
     "jsx": "react-jsx",
     "jsxImportSource": "react"
