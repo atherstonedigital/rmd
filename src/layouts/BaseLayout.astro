@@ -12,7 +12,7 @@ interface Props {
 }
 
 const { title, description, canonical, schemaData = [], isHomepage = false } = Astro.props;
-const ogImage = '/images/og/og-default.jpg';
+const ogImage = `${import.meta.env.SITE || 'https://rmdflooring.co.uk'}/images/og/og-default.jpg`;
 ---
 
 <!doctype html>

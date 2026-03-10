@@ -58,7 +58,7 @@ export function buildOrganization() {
     name: siteConfig.name,
     legalName: siteConfig.legalName,
     url: siteConfig.url,
-    logo: `${siteConfig.url}/images/logo.png`,
+    logo: `${siteConfig.url}/images/og/og-default.jpg`,
     contactPoint: {
       '@type': 'ContactPoint',
       telephone: siteConfig.phone.showroom,
@@ -79,11 +79,6 @@ export function buildWebSite() {
     url: siteConfig.url,
     publisher: {
       '@id': `${siteConfig.url}/#organization`,
-    },
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: `${siteConfig.url}/search?q={search_term_string}`,
-      'query-input': 'required name=search_term_string',
     },
   };
 }
